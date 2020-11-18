@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ProyectoFinal</string>
+
+    <string name="emailogin">Correo electronico</string>
+
+    <string name="pass">Contraseña</string>
+    <string name="iniciarsesion">Iniciar Sesion</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="Logo">Foto del logo</string>
+</resources>

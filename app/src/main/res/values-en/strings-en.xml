@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="emailogin">Email</string>
+
+    <string name="pass">Password</string>
+    <string name="iniciarsesion">Login In</string>
+    <string name="registrarse">Registry</string>
+    <string name="Logo">Logo photo</string>
+</resources>
