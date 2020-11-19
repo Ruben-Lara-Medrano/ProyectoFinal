@@ -7,4 +7,13 @@
     <string name="iniciarsesion">Iniciar Sesion</string>
     <string name="registrarse">Registrarse</string>
     <string name="Logo">Foto del logo</string>
+    <!--Opciones del menu Overflow -->
+    <string name="menuPrincipal">Menu principal</string>
+    <string name="chat">Chat</string>
+    <string name="perfil">Perfil</string>
+
+    <!--Botones de busca y compartir -->
+    <string name="buscar">Buscar</string>
+    <string name="compartir">Compartir</string>
+
 </resources>

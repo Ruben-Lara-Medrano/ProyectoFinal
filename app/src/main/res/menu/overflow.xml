@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/buscar"
+        android:icon="@drawable/buscar"
+        android:title="@string/buscar"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/compartir"
+        android:icon="@drawable/compartir"
+        android:title="@string/compartir"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/paginaPrincipal"
+        android:onClick="menuPrincipal"
+        android:title="@string/menuPrincipal" />
+    <item
+        android:id="@+id/perfil"
+        android:onClick="perfil"
+        android:title="@string/perfil" />
+    <item
+        android:id="@+id/chat"
+        android:onClick="chat"
+        android:title="@string/chat" />
+</menu>
