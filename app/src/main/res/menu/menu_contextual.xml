@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/copiar"
-        android:title="Copiar texto"
-    />
+        android:id="@+id/opcion1"
+        android:title="Copiar texto" />
     <item
-        android:id="@+id/editar"
-        android:title="Editar texto"
-        />
-    <item
-        android:id="@+id/pegar"
-        android:title="Pegar texto"
-        />
+        android:id="@+id/opcion2"
+        android:title="Borrado de texto" />
 </menu>

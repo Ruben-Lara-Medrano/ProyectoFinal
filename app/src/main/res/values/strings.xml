@@ -19,4 +19,8 @@
     <!-- ListView -->
     <string name="menuContextual">Editar tus datos de perfil.</string>
 
+    <!--Editar foto perfil -->
+    <string name="cambiarFotoPerfil">Cambiar foto perfil</string>
+
+
 </resources>

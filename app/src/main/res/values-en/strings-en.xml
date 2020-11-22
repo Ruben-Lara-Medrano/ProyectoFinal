@@ -17,4 +17,6 @@
     <string name="compartir">Share</string>
 
     <string name="menuContextual">Change your profile data.</string>
+
+    <string name="cambiarFotoPerfil">Edite profile image.</string>
 </resources>
