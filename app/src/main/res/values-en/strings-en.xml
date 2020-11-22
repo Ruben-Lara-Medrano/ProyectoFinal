@@ -15,4 +15,6 @@
 
     <string name="buscar">Search</string>
     <string name="compartir">Share</string>
+
+    <string name="menuContextual">Change your profile data.</string>
 </resources>

@@ -16,4 +16,7 @@
     <string name="buscar">Buscar</string>
     <string name="compartir">Compartir</string>
 
+    <!-- ListView -->
+    <string name="menuContextual">Editar tus datos de perfil.</string>
+
 </resources>
