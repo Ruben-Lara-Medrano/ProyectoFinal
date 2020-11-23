@@ -32,6 +32,11 @@ ImageView imagen;
         menu.setHeaderTitle("Elige una opcion");
         getMenuInflater().inflate(R.menu.menu_contextual, menu);
     }
+    public void mapa (View view)
+    {
+        Intent botonMapa = new Intent(this,MapsEmpresa.class );
+        startActivity(botonMapa);
+    }
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {

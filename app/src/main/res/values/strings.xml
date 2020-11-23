@@ -22,5 +22,8 @@
     <!--Editar foto perfil -->
     <string name="cambiarFotoPerfil">Cambiar foto perfil</string>
 
+    <!--Variables de maps -->
+    <string name="title_activity_maps_empresa">Mapa</string>
+    <string name="vermapa">Mire su localizacion en google maps.</string>
 
 </resources>
