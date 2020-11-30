@@ -9,6 +9,9 @@
     <string name="registrarse">Registry</string>
     <string name="Logo">Logo photo</string>
 
+    <string name="pass2">Put again your password</string>
+    <string name="btnregistrarse">Sing in</string>
+
     <string name="menuPrincipal">Main menu</string>
     <string name="chat">Chat</string>
     <string name="perfil">Profile</string>
@@ -21,5 +24,5 @@
     <string name="cambiarFotoPerfil">Edite profile image.</string>
 
     <string name="title_activity_maps_empresa">Mapa</string>
-    <string name="vermapa">Mire su localizacion en google maps.</string>s
+    <string name="vermapa">See your location on map.</string>
 </resources>

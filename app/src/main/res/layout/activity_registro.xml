@@ -4,30 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+    tools:context=".Registro">
 
     <LinearLayout
-        android:layout_width="360dp"
-        android:layout_height="471dp"
+        android:layout_width="374dp"
+        android:layout_height="566dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.781">
 
         <EditText
-            android:id="@+id/emailLogin"
+            android:id="@+id/EmailRegistro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -35,25 +26,27 @@
             android:inputType="textEmailAddress" />
 
         <EditText
-            android:id="@+id/passLogin"
+            android:id="@+id/Pass1Registro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/pass"
             android:inputType="textPassword" />
 
-        <Button
-            android:id="@+id/inicarsesion"
+        <EditText
+            android:id="@+id/Pass2Registro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="iniciarSesion"
-            android:text="@string/iniciarsesion" />
+            android:ems="10"
+            android:hint="@string/pass2"
+            android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/registrarLogin"
+            android:id="@+id/btnRegistrarse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="registrar"
-            android:text="@string/registrarse" />
+            android:onClick="registrarUsuario"
+            android:text="@string/btnregistrarse" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

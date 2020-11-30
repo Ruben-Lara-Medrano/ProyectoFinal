@@ -7,6 +7,10 @@
     <string name="iniciarsesion">Iniciar Sesion</string>
     <string name="registrarse">Registrarse</string>
     <string name="Logo">Foto del logo</string>
+
+    <!--Registrase -->
+    <string name="pass2">Introduzca de nuevo su contraseña</string>
+    <string name="btnregistrarse">Registrarte</string>
     <!--Opciones del menu Overflow -->
     <string name="menuPrincipal">Menu principal</string>
     <string name="chat">Chat</string>
