@@ -34,8 +34,8 @@
             android:label="@string/title_activity_maps_empresa" />
         <activity android:name=".chat" />
         <activity android:name=".perfil" />
-        <activity android:name=".principal" />
-        <activity android:name=".login">
+        <activity android:name=".login" />
+        <activity android:name=".principal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

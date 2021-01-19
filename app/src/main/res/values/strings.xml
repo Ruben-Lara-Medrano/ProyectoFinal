@@ -23,11 +23,23 @@
     <!-- ListView -->
     <string name="menuContextual">Editar tus datos de perfil.</string>
 
-    <!--Editar foto perfil -->
+    <!--perfil -->
     <string name="cambiarFotoPerfil">Cambiar foto perfil</string>
+    <string name="Volver">Volver a principal</string>
+    <string name="nombrePerfil">Nombre de usuario</string>
+    <string name="nombrePerfil2">Ruben.Lara_24</string>
+    <string name="telefono">Telefono</string>
+    <string name="numeroTelefono">658431297</string>
+    <string name="email">Email</string>
+    <string name="emailUsuario">ruben@ruben.crack</string>
+    <string name="trabajo">Trabajo usuario</string>
+    <string name="trabajousuario">programador</string>
 
     <!--Variables de maps -->
     <string name="title_activity_maps_empresa">Mapa</string>
     <string name="vermapa">Mire su localizacion en google maps.</string>
 
+    <!--Strings para el menu contextual -->
+    <string name="opcion1">Copiar texto</string>
+    <string name="opcion2">Borrar texto</string>
 </resources>

@@ -37,6 +37,11 @@ ImageView imagen;
         Intent botonMapa = new Intent(this,MapsEmpresa.class );
         startActivity(botonMapa);
     }
+    public void volver (View view)
+    {
+        Intent volver = new Intent(this,principal.class );
+        startActivity(volver);
+    }
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {

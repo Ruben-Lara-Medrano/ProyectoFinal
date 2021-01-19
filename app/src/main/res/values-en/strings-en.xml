@@ -22,7 +22,19 @@
     <string name="menuContextual">Change your profile data.</string>
 
     <string name="cambiarFotoPerfil">Edite profile image.</string>
+    <string name="nombrePerfil">User name</string>
+    <string name="nombrePerfil2">Ruben.Lara_24</string>
+    <string name="telefono">Phone</string>
+    <string name="numeroTelefono">658431297</string>
+    <string name="email">Email</string>
+    <string name="emailUsuario">ruben@ruben.crack</string>
+    <string name="trabajo">User work</string>
+    <string name="trabajousuario">programmer</string>
 
+    <string name="Volver">Go to main.</string>
     <string name="title_activity_maps_empresa">Mapa</string>
     <string name="vermapa">See your location on map.</string>
+
+    <string name="opcion1">Copy text</string>
+    <string name="opcion2">Delete text</string>
 </resources>
