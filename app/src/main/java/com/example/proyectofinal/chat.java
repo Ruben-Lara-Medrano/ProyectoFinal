@@ -2,6 +2,7 @@ package com.example.proyectofinal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,5 +37,20 @@ public class chat extends AppCompatActivity {
                 tv1.setText("Ultima conexion con: "+ lv1.getItemAtPosition(position)+ " fue el "+ conexion[position]);
             }
         });
+    }
+    public void perfil (View view)
+    {
+        Intent botonPerfil = new Intent(this,perfil.class );
+        startActivity(botonPerfil);
+    }
+    public void chat (View view)
+    {
+        Intent botonChat = new Intent(this,chat.class );
+        startActivity(botonChat);
+    }
+    public void principal (View view)
+    {
+        Intent botonChat = new Intent(this,principal.class );
+        startActivity(botonChat);
     }
 }

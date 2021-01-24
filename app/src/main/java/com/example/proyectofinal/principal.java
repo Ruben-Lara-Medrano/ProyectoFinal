@@ -34,6 +34,11 @@ public class principal extends AppCompatActivity {
         Intent botonChat = new Intent(this,chat.class );
         startActivity(botonChat);
     }
+    public void principal (View view)
+    {
+        Intent botonChat = new Intent(this,principal.class );
+        startActivity(botonChat);
+    }
 
     public boolean onCreateOptionsMenu(Menu menu){
         //Carpeta res - menu - overflow y pasamos el objeto menu
@@ -47,13 +52,13 @@ public class principal extends AppCompatActivity {
 
         // Id de cada opcion del menu
         if (id != R.id.paginaPrincipal) {
-             if(id == R.id.paginaPrincipal){
+             if(id == R.id.btnprincipal){
                 Toast.makeText(this, "paginaPrincipal", Toast.LENGTH_SHORT).show();
             }
-            else if(id == R.id.chat){
+            else if(id == R.id.btnChat){
                 Toast.makeText(this, "chat", Toast.LENGTH_SHORT).show();
             }
-            if(id == R.id.perfil){
+            if(id == R.id.btnperfil){
                 Toast.makeText(this, "perfil", Toast.LENGTH_SHORT).show();
             }
             else if(id == R.id.compartir){
