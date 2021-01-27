@@ -4,56 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context=".login">
+
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_width="120dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toTopOf="@+id/emailLogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/logo" />
 
-    <LinearLayout
-        android:layout_width="360dp"
-        android:layout_height="471dp"
-        android:orientation="vertical"
+    <EditText
+        android:id="@+id/emailLogin"
+        android:layout_width="207dp"
+        android:layout_height="35dp"
+        android:background="#11000000"
+        android:drawableLeft="@drawable/ic_persona_perfil"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/emailLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/emailogin"
-            android:inputType="textEmailAddress" />
+    <EditText
+        android:id="@+id/passLogin"
+        android:layout_width="202dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="48dp"
+        android:background="#11000000"
+        android:drawableLeft="@drawable/ic_candado"
+        android:ems="10"
+        android:hint="@string/pass"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/emailLogin"
+        app:layout_constraintVertical_bias="0.136" />
 
-        <EditText
-            android:id="@+id/passLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/pass"
-            android:inputType="textPassword" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/inicarsesion"
+        android:layout_width="270dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="91dp"
+        android:onClick="iniciarSesion"
+        app:cardBackgroundColor="@color/teal_200"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/passLogin">
 
-        <Button
-            android:id="@+id/inicarsesion"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="iniciarSesion"
-            android:text="@string/iniciarsesion" />
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/registrarLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="registrar"
-            android:text="@string/registrarse" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:layout_centerInParent="true"
+                android:text="@string/iniciarsesion"
+                android:textColor="#fff"
+                android:textSize="24sp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <EditText
+        android:id="@+id/registrarLogin"
+        android:layout_width="220dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:onClick="registrar"
+        android:text="@string/btnregistrarse"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inicarsesion" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

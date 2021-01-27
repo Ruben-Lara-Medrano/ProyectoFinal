@@ -1,8 +1,10 @@
-package com.example.proyectofinal;
+ package com.example.proyectofinal;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +21,7 @@ import android.widget.Toast;
 public class perfil extends AppCompatActivity {
 private TextView tvPerfil;
 ImageView imagen;
+private Button volver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +29,31 @@ ImageView imagen;
         TextView textView = findViewById(R.id.text_view);
         registerForContextMenu(textView);
         imagen= (ImageView) findViewById(R.id.iVFotoPerfil);
+     //   volver.setOnClickListener(new View.OnClickListener() {
+        //  @Override
+        //  public void onClick(View v) {
+        //    AlertDialog.Builder alerta = new AlertDialog.Builder(perfil.this);
+        //    alerta.setMessage("¿Desea guardar los cambios?")
+        //   .setCancelable(false)
+        //     .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+        //         @Override
+        //          public void onClick(DialogInterface dialog, int which) {
+        //              finish();
+        //          }
+        //      })
+        //      .setNegativeButton("No", new DialogInterface.OnClickListener() {
+        //          @Override
+        //          public void onClick(DialogInterface dialog, int which) {
+        //              dialog.cancel();
+        //          }
+        //      });
+        //       AlertDialog titulo = alerta.create();
+        //        titulo.setTitle("Salida");
+        //       titulo.show();
+        //   }
+        // });
     }
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
