@@ -18,7 +18,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class perfil extends AppCompatActivity {
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+ public class perfil extends AppCompatActivity {
 private TextView tvPerfil;
 ImageView imagen;
 private Button volver;
@@ -27,8 +30,13 @@ private Button volver;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
         TextView textView = findViewById(R.id.text_view);
+        TextView nombreuser = findViewById(R.id.nombreUsuario);
         registerForContextMenu(textView);
         imagen= (ImageView) findViewById(R.id.iVFotoPerfil);
+        FirebaseUser mAuth;
+        mAuth = FirebaseAuth.getInstance().getCurrentUser();
+        String user_id = mAuth.getUid();
+        nombreuser.setText(user_id);
      //   volver.setOnClickListener(new View.OnClickListener() {
         //  @Override
         //  public void onClick(View v) {
