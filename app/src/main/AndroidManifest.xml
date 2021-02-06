@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".Registro"></activity>
+        <activity android:name=".DetallesUsuario"></activity>
+        <activity android:name=".barra_de_busqueda" />
+        <activity android:name=".Registro" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

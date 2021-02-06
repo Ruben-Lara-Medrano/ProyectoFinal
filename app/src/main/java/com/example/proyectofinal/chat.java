@@ -43,6 +43,11 @@ public class chat extends AppCompatActivity {
         Intent botonPerfil = new Intent(this,perfil.class );
         startActivity(botonPerfil);
     }
+    public void buscar (View view)
+    {
+        Intent botonbuscar = new Intent(this,barra_de_busqueda.class );
+        startActivity(botonbuscar);
+    }
     public void chat (View view)
     {
         Intent botonChat = new Intent(this,chat.class );

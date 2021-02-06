@@ -60,6 +60,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
+            android:onClick="buscar"
             app:srcCompat="@drawable/ic_baseline_search_24"
             tools:ignore="VectorDrawableCompat" />
 
