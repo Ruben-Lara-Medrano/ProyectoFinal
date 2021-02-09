@@ -25,8 +25,8 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        correo = findViewById(R.id.emailLogin);
-        pass = findViewById(R.id.passLogin);
+        correo = findViewById(R.id.EmailRegistro);
+        pass = findViewById(R.id.Pass1Registro);
         mAuth = FirebaseAuth.getInstance();
     }
     protected void onStart() {

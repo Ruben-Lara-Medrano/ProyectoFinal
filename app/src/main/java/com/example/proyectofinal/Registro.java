@@ -35,6 +35,7 @@ public class Registro extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         //updateUI(currentUser);
     }
+
     public void registrarUsuario (View view){
 
         if(pass.getText().toString().trim().equals(confirmacionpass.getText().toString().trim())){
@@ -68,5 +69,10 @@ public class Registro extends AppCompatActivity {
         }
 
 
+    }
+    public void VolverLogin (View view)
+    {
+        Intent VolverLogin = new Intent(this, login.class );
+        startActivity(VolverLogin);
     }
 }

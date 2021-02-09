@@ -11,6 +11,7 @@
     <!--Registrase -->
     <string name="pass2">Introduzca de nuevo su contraseña</string>
     <string name="btnregistrarse">Registrarte</string>
+    <string name="VolverLogin">Volver al login</string>
     <!--Opciones del menu Overflow -->
     <string name="menuPrincipal">Menu principal</string>
     <string name="chat">Chat</string>

@@ -6,6 +6,10 @@ public class InformacionUsuario {
     String descp;
     Integer imageUrl;
 
+    public InformacionUsuario() {
+
+    }
+
     public InformacionUsuario(String userName, String descp, Integer imageUrl) {
         this.userName = userName;
         this.descp = descp;

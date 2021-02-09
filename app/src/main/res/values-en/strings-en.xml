@@ -11,6 +11,7 @@
 
     <string name="pass2">Put again your password</string>
     <string name="btnregistrarse">Sing in</string>
+    <string name="VolverLogin">Return login</string>
 
     <string name="menuPrincipal">Main menu</string>
     <string name="chat">Chat</string>
