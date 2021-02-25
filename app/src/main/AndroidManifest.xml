@@ -18,14 +18,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".principal">
+        <activity android:name=".login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetallesUsuario" />
+        <activity android:name=".pojos.DetallesUsuario" />
         <activity android:name=".barra_de_busqueda" />
         <activity android:name=".Registro" />
         <!--
@@ -45,7 +45,7 @@
             android:label="@string/title_activity_maps_empresa" />
         <activity android:name=".chat" />
         <activity android:name=".perfil" />
-        <activity android:name=".login" />
+        <activity android:name=".principal" />
     </application>
 
 </manifest>

@@ -9,7 +9,7 @@
     <string name="Logo">Foto del logo</string>
 
     <!--Registrase -->
-    <string name="pass2">Introduzca de nuevo su contraseña</string>
+    <string name="pass2">Repita su contraseña</string>
     <string name="btnregistrarse">Registrarte</string>
     <string name="VolverLogin">Volver al login</string>
     <!--Opciones del menu Overflow -->

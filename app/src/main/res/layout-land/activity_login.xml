@@ -9,7 +9,7 @@
 
 
     <EditText
-        android:id="@+id/EmailRegistro"
+        android:id="@+id/telefono"
         android:layout_width="207dp"
         android:layout_height="35dp"
         android:background="#11000000"
@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/EmailRegistro"
+        app:layout_constraintTop_toTopOf="@+id/telefono"
         app:layout_constraintVertical_bias="0.136" />
 
     <androidx.cardview.widget.CardView

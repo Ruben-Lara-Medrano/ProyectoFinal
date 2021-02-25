@@ -4,8 +4,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -18,8 +20,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
  public class perfil extends AppCompatActivity {
 private TextView tvPerfil;
@@ -37,29 +43,8 @@ private Button volver;
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         String user_id = mAuth.getUid();
         nombreuser.setText(user_id);
-     //   volver.setOnClickListener(new View.OnClickListener() {
-        //  @Override
-        //  public void onClick(View v) {
-        //    AlertDialog.Builder alerta = new AlertDialog.Builder(perfil.this);
-        //    alerta.setMessage("¿Desea guardar los cambios?")
-        //   .setCancelable(false)
-        //     .setPositiveButton("Si", new DialogInterface.OnClickListener() {
-        //         @Override
-        //          public void onClick(DialogInterface dialog, int which) {
-        //              finish();
-        //          }
-        //      })
-        //      .setNegativeButton("No", new DialogInterface.OnClickListener() {
-        //          @Override
-        //          public void onClick(DialogInterface dialog, int which) {
-        //              dialog.cancel();
-        //          }
-        //      });
-        //       AlertDialog titulo = alerta.create();
-        //        titulo.setTitle("Salida");
-        //       titulo.show();
-        //   }
-        // });
+        String url ="http://192.168.8.120:80/Android/sacar_usuario.php"+user_id;
+       // sacarUsuario(user_id);
     }
 
     @Override

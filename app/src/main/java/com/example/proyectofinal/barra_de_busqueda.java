@@ -41,7 +41,7 @@ public class barra_de_busqueda extends AppCompatActivity {
 
         searchView = findViewById(R.id.search_bar);
 
-        ListaUsuarios=obtenerFavoritos("http://192.168.8.100:80/Android/buscar_favoritos.php");
+        ListaUsuarios=obtenerFavoritos("http://192.168.8.120:80/Android/buscar_favoritos.php");
 
        /** ListaUsuarios.add(new InformacionUsuario("Pepe Thomas","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_female_1));
         ListaUsuarios.add(new InformacionUsuario("Juan Green","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_male_2));
@@ -89,12 +89,12 @@ public class barra_de_busqueda extends AppCompatActivity {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                JSONObject jsonObject = null;
+                JSONObject jsonObject;
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         InformacionUsuario info=new InformacionUsuario();
                         jsonObject = response.getJSONObject(i);
-                        ListaUsuarios.add(new InformacionUsuario(jsonObject.getString("Nombre"),jsonObject.getString("descripcion"), R.drawable.photo_female_4));
+                        ListaUsuarios.add(new InformacionUsuario(jsonObject.getString("nombre"),jsonObject.getString("puesto"), R.drawable.photo_female_4));
                        // info.setUserName(jsonObject.getString("Nombre"));
                       //  info.setDescp(jsonObject.getString("descripcion"));
                        // info.setImageUrl(R.drawable.photo_female_4);
@@ -115,7 +115,7 @@ public class barra_de_busqueda extends AppCompatActivity {
         requestQueue.add(jsonArrayRequest);
         return ListaUsuarios;
     }
-    private  void setRecyclerView(List<InformacionUsuario> informacionUsuarioList){
+    private void setRecyclerView(List<InformacionUsuario> informacionUsuarioList){
         RecyclerView = findViewById(R.id.userRecycler);
         RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         RecyclerView.setLayoutManager(layoutManager);

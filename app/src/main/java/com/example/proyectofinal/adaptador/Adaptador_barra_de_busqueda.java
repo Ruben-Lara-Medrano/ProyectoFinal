@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.proyectofinal.ItemAnimation;
 import com.example.proyectofinal.R;
-import com.example.proyectofinal.DetallesUsuario;
+import com.example.proyectofinal.pojos.DetallesUsuario;
 import com.example.proyectofinal.modelo.InformacionUsuario;
 
 import java.util.ArrayList;

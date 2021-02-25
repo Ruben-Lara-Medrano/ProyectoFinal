@@ -9,25 +9,37 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Registro extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private EditText correo;
     private EditText pass;
-    private EditText confirmacionpass;
+    private EditText confirmacionpass, nombre, puesto,telefono;
+    String idFirebase;
+    String url="http://192.168.8.119:80/Android/insertar.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         mAuth = FirebaseAuth.getInstance();
-        correo = findViewById(R.id.EmailRegistro);
-        pass = findViewById(R.id.Pass1Registro);
-        confirmacionpass = findViewById(R.id.Pass2Registro);
+        nombre=findViewById(R.id.nombre);
+        correo = findViewById(R.id.correoRegistro);
+        puesto=findViewById(R.id.puesto);
+        telefono=findViewById(R.id.telefono);
+        pass = findViewById(R.id.pass1Registro);
+        confirmacionpass = findViewById(R.id.pass2Registro);
     }
     public void onStart() {
         super.onStart();
@@ -37,6 +49,27 @@ public class Registro extends AppCompatActivity {
     }
 
     public void registrarUsuario (View view){
+        if(correo.getText().toString().equals("") || nombre.getText().toString().equals("") || puesto.getText().toString().equals("")
+                || pass.getText().toString().equals("") || confirmacionpass.getText().toString().equals("")|| telefono.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "Todos los campos deben estar rellenados.", Toast.LENGTH_SHORT).show();
+            // Snackbar snackbar = Snackbar.make(view, R.string.todosCamposOk, Snackbar.LENGTH_LONG);
+            // snackbar.setDuration(10000);
+           // snackbar.setAction("Ok", v -> {
+            //});
+           // snackbar.show();
+        }
+        else if(!pass.getText().toString().equals(confirmacionpass.getText().toString())){
+            Toast.makeText(getApplicationContext(), "Las contraseñas deben ser iguales", Toast.LENGTH_SHORT).show();
+           // snackbar.setDuration(10000);
+            //snackbar.setAction("Ok", v -> {
+           // });
+            //snackbar.show();
+        }
+        else if(pass.length()<9){
+            Toast.makeText(getApplicationContext(), "Usuario creado", Toast.LENGTH_SHORT).show();
+        }
+        else{
+
 
         if(pass.getText().toString().trim().equals(confirmacionpass.getText().toString().trim())){
             mAuth.createUserWithEmailAndPassword(correo.getText().toString().trim(), pass.getText().toString().trim())
@@ -49,6 +82,8 @@ public class Registro extends AppCompatActivity {
                                 //Log.d(TAG, "createUserWithEmail:success");
                                 Toast.makeText(getApplicationContext(), "Usuario creado", Toast.LENGTH_SHORT).show();
                                 FirebaseUser user = mAuth.getCurrentUser();
+                                idFirebase = mAuth.getUid();
+                                insertarUsuarioBdPropia(idFirebase, nombre.getText().toString(), correo.getText().toString(), puesto.getText().toString(),telefono.getText().toString(), pass.getText().toString());
                                 Intent registro = new Intent(getApplicationContext(), principal.class);
                                 startActivity(registro);
                                 //updateUI(user);
@@ -64,11 +99,26 @@ public class Registro extends AppCompatActivity {
                         }
                     });
         }
-        else{
-            Toast.makeText(this,"Las contraseñas no coinciden.", Toast.LENGTH_SHORT).show();
-        }
+    }
 
-
+    }
+    private void insertarUsuarioBdPropia(String idFirebase, String nombreUsuario, String correo, String puesto,String telefono, String pass){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response ->
+                Toast.makeText(getApplicationContext(), "Bienvenid@ a la mejor red social del mundo", Toast.LENGTH_SHORT).show(), error -> Toast.makeText(getApplicationContext(), "No conseguiste logearte WACHINNN!", Toast.LENGTH_SHORT).show()){
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> atributos = new HashMap<>();
+                atributos.put("id", idFirebase);
+                atributos.put("nombre",nombreUsuario);
+                atributos.put("telefono",telefono);
+                atributos.put("email",correo);
+                atributos.put("puesto",puesto);
+                atributos.put("pass",pass);
+                return atributos;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
     public void VolverLogin (View view)
     {

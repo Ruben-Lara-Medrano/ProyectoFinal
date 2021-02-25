@@ -1,9 +1,11 @@
-package com.example.proyectofinal;
+package com.example.proyectofinal.pojos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.proyectofinal.R;
 
 public class DetallesUsuario extends AppCompatActivity {
 

@@ -25,34 +25,23 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        correo = findViewById(R.id.EmailRegistro);
+        correo = findViewById(R.id.telefono);
         pass = findViewById(R.id.Pass1Registro);
         mAuth = FirebaseAuth.getInstance();
+        String idFirebase = mAuth.getUid();
+
+        if(idFirebase!=null){
+            Intent i = new Intent(getApplicationContext(), principal.class);
+            startActivity(i);
+        }
     }
+
     protected void onStart() {
         super.onStart();
 
         Toast.makeText(this, "Iniciando Aplicacion", Toast.LENGTH_SHORT).show();
         // La actividad está a punto de hacerse visible.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Toast.makeText(this, "OnResume", Toast.LENGTH_SHORT).show();
-        // La actividad se ha vuelto visible (ahora se "reanuda").
-    }
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Toast.makeText(this, "Pausando Aplicacion", Toast.LENGTH_SHORT).show();
-        // Enfocarse en otra actividad  (esta actividad está a punto de ser "detenida").
-    }
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Toast.makeText(this, "OnStop", Toast.LENGTH_SHORT).show();
-        // La actividad ya no es visible (ahora está "detenida")
     }
     @Override
     protected void onDestroy() {
@@ -66,6 +55,15 @@ public class login extends AppCompatActivity {
         startActivity(registrar);
     }
     public void iniciarSesion (View view){
+        if(correo.getText().toString().equals("")|| pass.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "Todos los campos deben estar rellenados.", Toast.LENGTH_SHORT).show();
+            // Snackbar snackbar = Snackbar.make(view, R.string.todosCamposOk, Snackbar.LENGTH_LONG);
+            // snackbar.setDuration(10000);
+            // snackbar.setAction("Ok", v -> {
+            //});
+            // snackbar.show();
+        }
+        else{
         //TODO : pendiente hacer comprobar que los apartado no esten vacios y hacer un boton de logout. Hacer un diseño chulo y seguir con la activity main y sus funcionaliades
         mAuth.signInWithEmailAndPassword(correo.getText().toString().trim(), pass.getText().toString().trim())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -91,5 +89,6 @@ public class login extends AppCompatActivity {
                         // ...
                     }
                 });
+        }
     }
 }
