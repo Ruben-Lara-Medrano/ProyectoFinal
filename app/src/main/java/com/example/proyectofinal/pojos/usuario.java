@@ -8,7 +8,7 @@ public class usuario {
     private String imagen;
     private String pass;
 
-    public usuario() {
+    public usuario(String nombre, String telefono, String correo, String puesto) {
     }
 
     public usuario(String nombre, String correo, String telefono, String puesto, String imagen, String pass) {

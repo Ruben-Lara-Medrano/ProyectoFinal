@@ -30,10 +30,10 @@ public class login extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         String idFirebase = mAuth.getUid();
 
-        if(idFirebase!=null){
+        /*if(idFirebase!=null){
             Intent i = new Intent(getApplicationContext(), principal.class);
             startActivity(i);
-        }
+        }*/
     }
 
     protected void onStart() {
