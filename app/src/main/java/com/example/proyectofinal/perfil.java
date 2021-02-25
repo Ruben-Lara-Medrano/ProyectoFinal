@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.example.proyectofinal.pojos.DireccionesBd;
 
 import com.android.volley.toolbox.JsonArrayRequest;
@@ -29,6 +31,7 @@ import com.example.proyectofinal.pojos.usuario;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,44 +57,39 @@ private Button volver;
         String user_id = mAuth.getUid();
        // nombreuser.setText(user_id);
        // String url ="http://172.16.2.219:80/Android/sacar_usuario.php"+user_id;
+        requestQueue= Volley.newRequestQueue(getApplicationContext());
         sacarUsuario(user_id);
     }
-     private void sacarUsuario(String IdUsuario){
-        String url = direcciones.cogerUsuario()+IdUsuario;
-        Toast.makeText(getApplicationContext(), url, Toast.LENGTH_LONG).show();
-         /*JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(direcciones.cogerUsuario()+IdUsuario, response -> {
-             JSONObject jsonObject = null;
-             usuario usuarioDatos = null;
-             for (int i = 0; i < response.length(); i++) {
-                 try {
-                     jsonObject = response.getJSONObject(i);
-                     usuarioDatos = new usuario(
-                             jsonObject.getString("nombre"),
-                             jsonObject.getString("telefono"),
-                             jsonObject.getString("correo"),
-                             jsonObject.getString("puesto"));
-                 } catch (JSONException e) {
-                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+     private void sacarUsuario(String fireId){
+         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest("http://172.16.2.219/PhpMoviles/sacar_usuario.php?id=iGdD8vdidHSW0qhuC5w4dV136VR2", new Response.Listener<JSONArray>() {
+             @Override
+             public void onResponse(JSONArray response) {
+                 JSONObject jsonObject = null;
+                 usuario usuario =null;
+                 for (int i = 0; i < response.length(); i++) {//String nombre, String telefono, String correo, String puesto
+                     try {
+                         // Toast.makeText(getApplicationContext(), jsonObject.getString("nombre"), Toast.LENGTH_SHORT).show();
+                         jsonObject = response.getJSONObject(i);//jsonObject.getString("nombre"),
+
+                         nombreUsuario.setText(jsonObject.getString("nombre"));
+                         /*usuario = new usuario(jsonObject.getString("nombre"),
+                                 jsonObject.getString("nombre"),
+                                 jsonObject.getString("nombre"),
+                                 jsonObject.getString("nombre"));*/
+
+                     } catch (JSONException e) {
+                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                     }
                  }
+
              }
-             nombreUsuario.setText(usuarioDatos.getNombre());
-             PerfilTelefono.setText(usuarioDatos.getTelefono());
-             correo.setText(usuarioDatos.getCorreo());
-             puesto.setText(usuarioDatos.getPuesto());
-             //cargarImagen(usuario.getFoto());
          }, error ->{
-             Toast.makeText(getApplicationContext(), "Error al cargar los datos del usuario.", Toast.LENGTH_SHORT).show();
-             FirebaseAuth.getInstance().signOut();
-             /**SharedPreferences preferences=getSharedPreferences("sonido",Context.MODE_PRIVATE);
-             SharedPreferences.Editor editor=preferences.edit();
-             editor.clear();
-             editor.commit();*//*
-             Intent i = new Intent(getApplicationContext(), login.class);
-             startActivity(i);
+             Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
          }
          );
+
          requestQueue.add(jsonArrayRequest);
-*/
+
      }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
