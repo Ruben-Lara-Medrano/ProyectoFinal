@@ -1,29 +1,24 @@
 package com.example.proyectofinal;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 public class adaptadorLista extends RecyclerView.Adapter<adaptadorLista.ViewHolder> {
-    private List<listview> nData;
+    private List<Publicacion> nData;
     private LayoutInflater nInflater;
     private Context context;
 
-    public adaptadorLista (List<listview> itemList,Context context){
+    public adaptadorLista (List<Publicacion> itemList, Context context){
         this.nInflater = LayoutInflater.from(context);
         this.context = context;
         this.nData = itemList;
@@ -44,7 +39,7 @@ public class adaptadorLista extends RecyclerView.Adapter<adaptadorLista.ViewHold
         holder.binData(nData.get(position));
     }
 
-    public void setItems(List<listview> items){
+    public void setItems(List<Publicacion> items){
         nData=items;
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -58,7 +53,7 @@ public class adaptadorLista extends RecyclerView.Adapter<adaptadorLista.ViewHold
             cv = itemView.findViewById(R.id.cv);
         }
 
-        void binData (final listview item){
+        void binData (final Publicacion item){
             //imagenPerfil.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
             textoPublicacion.setText(item.getTextoPublicacion());
         }

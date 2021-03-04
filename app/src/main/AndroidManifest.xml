@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,7 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".pojos.DetallesUsuario" />
         <activity android:name=".barra_de_busqueda" />
         <activity android:name=".Registro" />
         <!--
@@ -40,11 +39,12 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".MapsEmpresa"
-            android:label="@string/title_activity_maps_empresa" />
-        <activity android:name=".chat" />
-        <activity android:name=".perfil" />
+        <activity android:name=".perfil"
+            android:parentActivityName=".Registro">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Registro" />
+        </activity>
         <activity android:name=".principal" />
     </application>
 

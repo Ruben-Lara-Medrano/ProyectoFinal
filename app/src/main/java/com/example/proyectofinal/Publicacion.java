@@ -1,9 +1,9 @@
 package com.example.proyectofinal;
-public class listview {
+public class Publicacion {
     public int FotoPerfil;
     public String textoPublicacion;
 
-    public listview(int fotoPerfil, String textoPublicacion) {
+    public Publicacion(int fotoPerfil, String textoPublicacion) {
         FotoPerfil = fotoPerfil;
         this.textoPublicacion = textoPublicacion;
     }

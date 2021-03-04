@@ -35,12 +35,17 @@
     <string name="emailUsuario">ruben@ruben.crack</string>
     <string name="trabajo">Trabajo usuario</string>
     <string name="trabajousuario">programador</string>
+    <string name="editarCaracteristicasUsu">Edite sus datos.</string>
 
     <!--Variables de maps -->
     <string name="title_activity_maps_empresa">Mapa</string>
-    <string name="vermapa">Mire su localizacion en google maps.</string>
+
 
     <!--Strings para el menu contextual -->
     <string name="opcion1">Copiar texto</string>
     <string name="opcion2">Borrar texto</string>
+
+    <!--Pop-up -->
+    <string name="puesto">Puesto</string>
+    <string name="enviar">Enviar</string>
 </resources>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -29,11 +30,12 @@ public class login extends AppCompatActivity {
         pass = findViewById(R.id.Pass1Registro);
         mAuth = FirebaseAuth.getInstance();
         String idFirebase = mAuth.getUid();
-
-        /*if(idFirebase!=null){
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.musiaca_intro);
+        mp.start();
+        if(idFirebase!=null){
             Intent i = new Intent(getApplicationContext(), principal.class);
             startActivity(i);
-        }*/
+        }
     }
 
     protected void onStart() {
@@ -64,7 +66,7 @@ public class login extends AppCompatActivity {
             // snackbar.show();
         }
         else{
-        //TODO : pendiente hacer comprobar que los apartado no esten vacios y hacer un boton de logout. Hacer un diseño chulo y seguir con la activity main y sus funcionaliades
+
         mAuth.signInWithEmailAndPassword(correo.getText().toString().trim(), pass.getText().toString().trim())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override

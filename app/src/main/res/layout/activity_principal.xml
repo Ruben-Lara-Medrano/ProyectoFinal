@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".principal">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/anadirPublicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="584dp"
+        android:clickable="true"
+        android:src="@drawable/ic_anadir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="167dp"
@@ -62,16 +76,6 @@
             android:background="@color/white"
             android:onClick="buscar"
             app:srcCompat="@drawable/ic_baseline_search_24"
-            tools:ignore="VectorDrawableCompat" />
-
-        <ImageButton
-            android:id="@+id/btnchat"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:onClick="chat"
-            app:srcCompat="@drawable/ic_btn_chat_"
             tools:ignore="VectorDrawableCompat" />
 
         <ImageButton

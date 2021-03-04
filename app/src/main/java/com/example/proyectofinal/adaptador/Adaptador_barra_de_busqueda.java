@@ -2,19 +2,28 @@ package com.example.proyectofinal.adaptador;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.proyectofinal.ItemAnimation;
 import com.example.proyectofinal.R;
-import com.example.proyectofinal.pojos.DetallesUsuario;
-import com.example.proyectofinal.modelo.InformacionUsuario;
+import com.example.proyectofinal.pojos.DireccionesBd;
+import com.example.proyectofinal.pojos.Usuario;
+import com.example.proyectofinal.perfil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +33,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Adaptador_barra_de_busqueda extends RecyclerView.Adapter<Adaptador_barra_de_busqueda.RecyclerviewHolder> {
 
     Context context;
-    List<InformacionUsuario> informacionUsuarioList;
-    List<InformacionUsuario> filteredInformacionUsuarioList;
-
-    public Adaptador_barra_de_busqueda(Context context, List<InformacionUsuario> informacionUsuarioList) {
+    List<Usuario> usuarioList;
+    List<Usuario> filteredUsuarioList;
+    RequestQueue requestQueue;
+    DireccionesBd direciones = new DireccionesBd();
+    public Adaptador_barra_de_busqueda(Context context, List<Usuario> usuarioList) {
         this.context = context;
-        this.informacionUsuarioList = informacionUsuarioList;
-        this.filteredInformacionUsuarioList = informacionUsuarioList;
+        this.usuarioList = usuarioList;
+        this.filteredUsuarioList = usuarioList;
+        requestQueue= Volley.newRequestQueue(context.getApplicationContext());
+
     }
 
     @NonNull
@@ -44,9 +56,9 @@ public class Adaptador_barra_de_busqueda extends RecyclerView.Adapter<Adaptador_
     @Override
     public void onBindViewHolder(@NonNull RecyclerviewHolder holder, final int position) {
 
-        holder.userName.setText(filteredInformacionUsuarioList.get(position).getUserName());
-        holder.userDesc.setText(filteredInformacionUsuarioList.get(position).getDescp());
-        holder.userImage.setImageResource(filteredInformacionUsuarioList.get(position).getImageUrl());
+        holder.userName.setText(filteredUsuarioList.get(position).getNombre());
+        holder.userDesc.setText(filteredUsuarioList.get(position).getPuesto());
+        holder.userImage.setImageResource(Integer.parseInt(filteredUsuarioList.get(position).getImagen()));
 
         ItemAnimation.animateFadeIn(holder.itemView, position);
 
@@ -54,11 +66,12 @@ public class Adaptador_barra_de_busqueda extends RecyclerView.Adapter<Adaptador_
             @Override
             public void onClick(View view) {
 //metodo para el onclick en cada card del buscador
-                Intent intent = new Intent(context, DetallesUsuario.class);
-                intent.putExtra("username", filteredInformacionUsuarioList.get(position).getUserName());
-                intent.putExtra("userDesc", filteredInformacionUsuarioList.get(position).getDescp());
+                Intent intent = new Intent(context, perfil.class);
+               intent.putExtra("usuarioId", filteredUsuarioList.get(position).getId());
+
+               //intent.putExtra("userDesc", filteredUsuarioList.get(position).getDescp());
                 context.startActivity(intent);
-                }
+            }
         });
 
         holder.userImage.setOnClickListener(new View.OnClickListener() {
@@ -72,12 +85,13 @@ public class Adaptador_barra_de_busqueda extends RecyclerView.Adapter<Adaptador_
 
     }
 
+
     @Override
     public int getItemCount() {
-        return filteredInformacionUsuarioList.size();
+        return filteredUsuarioList.size();
     }
 
-    public static final class RecyclerviewHolder extends RecyclerView.ViewHolder {
+    public  class RecyclerviewHolder extends RecyclerView.ViewHolder {
 
 
         CircleImageView userImage;
@@ -92,8 +106,25 @@ public class Adaptador_barra_de_busqueda extends RecyclerView.Adapter<Adaptador_
 
 
         }
+        void bindata (final Usuario sacarUsuario){
+        cargarImagen(userImage, direciones.actualizarFoto()+sacarUsuario.getImagen());
+        }
     }
-
+    private void cargarImagen(CircleImageView imagenPerfil, String url){
+//todo mirar el tema de ñla foto
+        ImageRequest imageRequest = new ImageRequest(url, new Response.Listener<Bitmap>() {
+            @Override
+            public void onResponse(Bitmap response) {
+                imagenPerfil.setImageBitmap(response);
+            }
+        }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //Poner una imagen por defecto
+            }
+        });
+        requestQueue.add(imageRequest);
+    }
     public Filter getFilter(){
 
         return new Filter() {
@@ -102,30 +133,30 @@ public class Adaptador_barra_de_busqueda extends RecyclerView.Adapter<Adaptador_
 
                 String Key = charSequence.toString();
                 if(Key.isEmpty()){
-                    filteredInformacionUsuarioList = informacionUsuarioList;
+                    filteredUsuarioList = usuarioList;
                 }
                 else{
 
-                    List<InformacionUsuario> lstFiltered = new ArrayList<>();
-                    for(InformacionUsuario row: informacionUsuarioList){
-                        if(row.getUserName().toLowerCase().contains(Key.toLowerCase())){
+                    List<Usuario> lstFiltered = new ArrayList<>();
+                    for(Usuario row: usuarioList){
+                        if(row.getNombre().toLowerCase().contains(Key.toLowerCase())){
                             lstFiltered.add(row);
 
                         }
                     }
 
-                    filteredInformacionUsuarioList = lstFiltered;
+                    filteredUsuarioList = lstFiltered;
                 }
 
                 FilterResults filterResults = new FilterResults();
-                filterResults.values = filteredInformacionUsuarioList;
+                filterResults.values = filteredUsuarioList;
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
 
-                filteredInformacionUsuarioList = (List<InformacionUsuario>)filterResults.values;
+                filteredUsuarioList = (List<Usuario>)filterResults.values;
                 notifyDataSetChanged();
 
             }

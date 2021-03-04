@@ -157,7 +157,7 @@
         android:id="@+id/VolverLogin"
         android:layout_width="220dp"
         android:layout_height="35dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="32dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/VolverLogin"
@@ -166,6 +166,19 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.366"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/tusDatos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Acepta el uso de tus datos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.949" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

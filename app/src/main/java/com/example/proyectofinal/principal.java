@@ -4,44 +4,102 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.proyectofinal.pojos.DireccionesBd;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class principal extends AppCompatActivity {
-    List<listview> elements = new ArrayList<>();
+    List<Publicacion> publicacionLista = new ArrayList<>();
     RequestQueue requestQueue;
+    DireccionesBd direcciones = new DireccionesBd();
+    AlertDialog.Builder dialogBuilder;
+    AlertDialog dialog;
+    FirebaseUser mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+        setContentView(R.layout.activity_principal); mAuth = FirebaseAuth.getInstance().getCurrentUser();
+
+
+        FloatingActionButton anadirPublicaion = findViewById(R.id.anadirPublicacion);
         init();
+        anadirPublicaion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowPopup(v);
+
+            }
+        });
     }
 
+    public void ShowPopup(View v) {
+        //Publicacion publicacion = new Publicacion(R.drawable.ic_foto_perfil_predeterminada,"");
+        final View contactPopupView = getLayoutInflater().inflate(R.layout.popup_publicacion, null);
+        dialogBuilder= new AlertDialog.Builder(this);
+        EditText texto = contactPopupView.findViewById(R.id.texto);
+        Button btnEnviar = contactPopupView.findViewById(R.id.btnEnviar);
+        TextView txtclose = contactPopupView.findViewById(R.id.txtclose);
+        String user_id = mAuth.getUid();
+        int listo=0;
+        dialogBuilder.setView(contactPopupView);
+        dialog= dialogBuilder.create();
+        dialog.show();
+        btnEnviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(texto.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "El campo texto debe estar lleno.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    insertarPublicacion(user_id,texto.getText().toString());
 
+                    dialog.cancel();
 
-//    public void menuPrincipal (View view)
-//    {
-//        Intent botonMenuPrincipal = new Intent(this,principal.class );
-//        startActivity(botonMenuPrincipal);
-//    }
+                }
+
+            }
+        });
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+
+    }
     public void perfil (View view)
     {
         Intent botonPerfil = new Intent(this,perfil.class );
@@ -52,14 +110,9 @@ public class principal extends AppCompatActivity {
         Intent botonbuscar = new Intent(this,barra_de_busqueda.class );
         startActivity(botonbuscar);
     }
-   public void chat (View view)
-    {
-        Intent botonChat = new Intent(this,chat.class );
-        startActivity(botonChat);
-    }
     public void principal (View view)
     {
-        Intent botonChat = new Intent(this,principal.class );
+        Intent botonChat =new Intent(this,principal.class );
         startActivity(botonChat);
     }
 
@@ -70,48 +123,23 @@ public class principal extends AppCompatActivity {
         return true;
     }
     public void init(){
-        elements=obtenerPublicaciones("http://192.168.8.120:80/Android/buscar_publicaciones.php");
+        obtenerPublicaciones(direcciones.buscarPublicaciones());
 
-        //elements.add(new listview(R.drawable.ic_foto_perfil_predeterminada, "Hola Buenos dias a todos y todas."));
-        // elements.add(new listview(R.drawable.ic_foto_perfil_predeterminada, "Hola Buenos dias a todos y todas."));
-        // elements.add(new listview(R.drawable.ic_foto_perfil_predeterminada, "Hola Buenos dias a todos y todas."));
-        //elements.add(new listview(R.drawable.ic_foto_perfil_predeterminada, "Hola Buenos dias a todos y todas."));
-        // elements.add(new listview(R.drawable.ic_foto_perfil_predeterminada, "Hola Buenos dias a todos y todas."));
-        // elements.add(new listview(R.drawable.ic_foto_perfil_predeterminada, "Hola Buenos dias a todos y todas."));
-        // elements.add(new listview(R.drawable.ic_foto_perfil_predeterminada, "Hola Buenos dias a todos y todas."));
-        // elements.add(new listview(R.drawable.ic_foto_perfil_predeterminada, "Hola Buenos dias a todos y todas."));
-        // elements.add(new listview(R.drawable.ic_foto_perfil_predeterminada, "Hola Buenos dias a todos y todas."));
-        // elements.add(new listview(R.drawable.ic_foto_perfil_predeterminada, "Hola Buenos dias a todos y todas."));
-        // elements.add(new listview(R.drawable.ic_foto_perfil_predeterminada, "Hola Buenos dias a todos y todas."));
-        // elements.add(new listview(R.drawable.ic_foto_perfil_predeterminada, "Hola Buenos dias a todos y todas."));
-
-        adaptadorLista listadapter = new adaptadorLista(elements, this);
-        RecyclerView recyclerView = findViewById(R.id.RecyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(listadapter);
     }
-    private List<listview> obtenerPublicaciones(String URL){
+    private void obtenerPublicaciones(String URL){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 JSONObject jsonObject;
                 for (int i = 0; i < response.length(); i++) {
                     try {
-                        //InformacionUsuario info=new InformacionUsuario();
                         jsonObject = response.getJSONObject(i);
-                        elements.add(new listview(R.drawable.ic_foto_perfil_predeterminada,jsonObject.getString("texto")));
-                       // elements.add(new listview(R.drawable.ic_foto_perfil_predeterminada,jsonObject.getString("texto")));
-                        //ListaUsuarios.add(new InformacionUsuario(jsonObject.getString("nombre"),jsonObject.getString("puesto"), R.drawable.photo_female_4));
-
-                        // info.setUserName(jsonObject.getString("Nombre"));
-                        //  info.setDescp(jsonObject.getString("descripcion"));
-                        // info.setImageUrl(R.drawable.photo_female_4);
-                        //ListaUsuarios.add(info);
+                        publicacionLista.add(new Publicacion(R.drawable.ic_foto_perfil_predeterminada,jsonObject.getString("texto")));
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
+                setRecyclerView(publicacionLista);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -122,7 +150,14 @@ public class principal extends AppCompatActivity {
         );
         requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
-        return elements;
+
+    }
+    public void setRecyclerView(List<Publicacion> publicacionesLista){
+        adaptadorLista listadapter = new adaptadorLista(publicacionLista, this);
+        RecyclerView recyclerView = findViewById(R.id.RecyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(listadapter);
     }
     public boolean onOptionsItemSelected(MenuItem item){
         int id= item.getItemId();
@@ -148,5 +183,33 @@ public class principal extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    private boolean cargarPreferencias(){
+        SharedPreferences preferences=getSharedPreferences("Musica", Context.MODE_PRIVATE);
+        Boolean sonidoActivado = preferences.getBoolean("Musica",true);
+        return sonidoActivado;
+    }
+    //metodo para la insercion de publicaciones
+    private void insertarPublicacion(String idFirebase, String texto){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, direcciones.anadirPublicaciones(), response ->
+                Toast.makeText(getApplicationContext(), "Publicacion insertada con exito", Toast.LENGTH_SHORT).show(), error -> Toast.makeText(getApplicationContext(), "La publicacion no se pudo insertar!", Toast.LENGTH_SHORT).show()){
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> atributos = new HashMap<>();
+                atributos.put("id", idFirebase);
+                atributos.put("texto",texto);
+                return atributos;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+        if(cargarPreferencias()){
+            MediaPlayer mp = MediaPlayer.create(this, R.raw.musica_para_publicacion);
+            mp.start();
+        }
+
+        Intent botonChat =new Intent(this,principal.class );
+        startActivity(botonChat);
     }
 }

@@ -1,23 +1,37 @@
 package com.example.proyectofinal.pojos;
 
-public class usuario {
-    private String nombre;
+public class Usuario {
+    private  String id;
+    private String nombre;//
     private String correo;
     private String telefono;
     private String puesto;
-    private String imagen;
+    private String imagen;//todo cambiar por string
     private String pass;
 
-    public usuario(String nombre, String telefono, String correo, String puesto) {
+    public Usuario(String nombre, String telefono, String correo, String puesto) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.puesto = puesto;
     }
 
-    public usuario(String nombre, String correo, String telefono, String puesto, String imagen, String pass) {
+    public Usuario(String id, String nombre, String correo, String telefono, String puesto, String imagen, String pass) {
+        this.id = id;
         this.nombre = nombre;
         this.correo = correo;
         this.telefono = telefono;
         this.puesto = puesto;
         this.imagen = imagen;
         this.pass = pass;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNombre() {

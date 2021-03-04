@@ -34,8 +34,11 @@
 
     <string name="Volver">Go to main.</string>
     <string name="title_activity_maps_empresa">Mapa</string>
-    <string name="vermapa">See your location on map.</string>
+    <string name="editarCaracteristicasUsu">Edit your profile data.</string>
 
     <string name="opcion1">Copy text</string>
     <string name="opcion2">Delete text</string>
+
+    <string name="puesto">Job</string>
+    <string name="enviar">Send</string>
 </resources>
