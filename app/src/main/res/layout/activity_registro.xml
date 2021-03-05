@@ -26,9 +26,9 @@
 
     <EditText
         android:id="@+id/pass2Registro"
-        android:layout_width="204dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="88dp"
+        android:layout_width="206dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="76dp"
         android:background="#11000000"
         android:drawableLeft="@drawable/ic_candado"
         android:ems="10"
@@ -40,30 +40,30 @@
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/telefono"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.044" />
 
     <EditText
         android:id="@+id/pass1Registro"
         android:layout_width="205dp"
-        android:layout_height="38dp"
+        android:layout_height="51dp"
         android:layout_marginTop="24dp"
         android:background="#11000000"
         android:drawableLeft="@drawable/ic_candado"
         android:ems="10"
         android:hint="@string/pass"
-        android:textColor="#fff"
         android:inputType="textPassword"
+        android:textColor="#fff"
         app:layout_constraintBottom_toTopOf="@+id/inicarsesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/puesto"
-        app:layout_constraintVertical_bias="0.458" />
+        app:layout_constraintVertical_bias="0.411" />
 
     <EditText
         android:id="@+id/puesto"
-        android:layout_width="202dp"
-        android:layout_height="38dp"
+        android:layout_width="206dp"
+        android:layout_height="45dp"
         android:layout_marginTop="20dp"
         android:background="#11000000"
         android:drawableLeft="@drawable/ic_work"
@@ -73,28 +73,28 @@
         android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/correoRegistro"
-        app:layout_constraintVertical_bias="0.027" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/correoRegistro"
-        android:layout_width="202dp"
-        android:layout_height="38dp"
+        android:layout_width="207dp"
+        android:layout_height="47dp"
         android:layout_marginTop="12dp"
         android:background="#11000000"
         android:drawableLeft="@drawable/ic_email"
         android:ems="10"
         android:hint="@string/email"
-        android:textColor="#fff"
         android:inputType="textEmailAddress"
+        android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombre"
-        app:layout_constraintVertical_bias="0.033" />
+        app:layout_constraintVertical_bias="0.009" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -111,21 +111,21 @@
 
     <EditText
         android:id="@+id/telefono"
-        android:layout_width="204dp"
-        android:layout_height="36dp"
+        android:layout_width="206dp"
+        android:layout_height="47dp"
         android:background="#11000000"
         android:drawableLeft="@drawable/ic__phone"
         android:ems="10"
         android:hint="@string/telefono"
         android:inputType="phone"
-        android:textSize="16sp"
         android:textColor="#fff"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.569" />
+        app:layout_constraintVertical_bias="0.558" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/inicarsesion"
@@ -153,8 +153,8 @@
                 android:layout_width="133dp"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="@string/btnregistrarse"
                 android:gravity="center"
+                android:text="@string/btnregistrarse"
                 android:textColor="#fff"
                 android:textSize="24sp" />
 

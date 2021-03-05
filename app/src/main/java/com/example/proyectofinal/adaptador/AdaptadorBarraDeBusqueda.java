@@ -2,22 +2,16 @@ package com.example.proyectofinal.adaptador;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.proyectofinal.ItemAnimation;
 import com.example.proyectofinal.Perfil;
@@ -30,14 +24,14 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Adaptador_barra_de_busqueda extends RecyclerView.Adapter<Adaptador_barra_de_busqueda.RecyclerviewHolder> {
+public class AdaptadorBarraDeBusqueda extends RecyclerView.Adapter<AdaptadorBarraDeBusqueda.RecyclerviewHolder> {
 
     Context context;
     List<Usuario> usuarioList;
     List<Usuario> filteredUsuarioList;
     RequestQueue requestQueue;
     DireccionesBd direciones = new DireccionesBd();
-    public Adaptador_barra_de_busqueda(Context context, List<Usuario> usuarioList) {
+    public AdaptadorBarraDeBusqueda(Context context, List<Usuario> usuarioList) {
         this.context = context;
         this.usuarioList = usuarioList;
         this.filteredUsuarioList = usuarioList;

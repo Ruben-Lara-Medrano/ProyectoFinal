@@ -19,7 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
-import com.example.proyectofinal.adaptador.Adaptador_barra_de_busqueda;
+import com.example.proyectofinal.adaptador.AdaptadorBarraDeBusqueda;
 import com.example.proyectofinal.pojos.DireccionesBd;
 import com.example.proyectofinal.pojos.Usuario;
 
@@ -31,7 +31,7 @@ import org.json.JSONObject;
 public class BarraDeBusqueda extends AppCompatActivity {
     RequestQueue requestQueue;
     RecyclerView RecyclerView;
-    Adaptador_barra_de_busqueda adaptadorbarradebusqueda;
+    AdaptadorBarraDeBusqueda adaptadorbarradebusqueda;
     EditText searchView;
     CharSequence search="";
     DireccionesBd direcciones = new DireccionesBd();
@@ -97,7 +97,7 @@ public class BarraDeBusqueda extends AppCompatActivity {
         RecyclerView = findViewById(R.id.userRecycler);
         RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         RecyclerView.setLayoutManager(layoutManager);
-        adaptadorbarradebusqueda = new Adaptador_barra_de_busqueda(this, usuarioList);
+        adaptadorbarradebusqueda = new AdaptadorBarraDeBusqueda(this, usuarioList);
         RecyclerView.setAdapter(adaptadorbarradebusqueda);
     }
 

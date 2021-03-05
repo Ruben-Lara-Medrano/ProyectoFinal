@@ -38,6 +38,9 @@
     <string name="title_activity_maps_empresa">Mapa</string>
     <string name="editarCaracteristicasUsu">Edit your profile data.</string>
 
+    <string name="barraBusqueda">Search users...</string>
+
+
     <string name="opcion1">Copy text</string>
     <string name="opcion2">Delete text</string>
 

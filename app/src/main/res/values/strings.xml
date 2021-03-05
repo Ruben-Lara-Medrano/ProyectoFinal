@@ -36,7 +36,8 @@
     <string name="trabajo">Trabajo usuario</string>
     <string name="trabajousuario">programador</string>
     <string name="editarCaracteristicasUsu">Edite sus datos.</string>
-
+    <!--Barra de busqueda -->
+    <string name="barraBusqueda">Buscar usuarios...</string>
     <!--Variables de maps -->
     <string name="title_activity_maps_empresa">Mapa</string>
 
@@ -77,4 +78,5 @@
     <string name="volverIntentar">Volver a intentar.</string>
     <string name="eligeOpcion">Elige una opcion.</string>
     <string name="lista">Publicaciones</string>
+
 </resources>
