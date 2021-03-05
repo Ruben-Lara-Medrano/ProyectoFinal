@@ -99,6 +99,7 @@ import java.util.Map;
             editar.setVisibility(View.INVISIBLE);
             quitarMusica.setVisibility(View.INVISIBLE);
             sacarUsuario(putId);
+            //cuando se clica en el boton llamar nos lleva al metodo que te pide permisos y haces la llamada
             llamar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -356,12 +357,14 @@ import java.util.Map;
      //Este metodo es para pedir los permisos de la llamada
      @Override
      public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        //devuelve un int que es el codigo de si acepto los permisos
          if(requestCode == REQUEST_PERMISSION_CALL){
+             //en caso de que acepte los permisos
              if(permissions.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                 // String telefono= numero.getText().toString(.trim());
                  call(PerfilTelefono.getText().toString());
              }
              else{
+                 //en caso contrario nos muestra un pop up que nos vuelve a pedir los permisos y si los aceptamos o no
                  if(ActivityCompat.shouldShowRequestPermissionRationale(Perfil.this, Manifest.permission.CALL_PHONE)){//Por si dio a no en los permisos
                      new AlertDialog.Builder(this).setMessage(R.string.necesitasPermisos)
                              .setPositiveButton(R.string.volverIntentar, new DialogInterface.OnClickListener() {

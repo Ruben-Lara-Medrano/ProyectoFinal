@@ -159,6 +159,7 @@ public class Registro extends AppCompatActivity {
         Intent VolverLogin = new Intent(this, Login.class );
         startActivity(VolverLogin);
     }
+
     private void setPendingIntent(){
         Intent intent = new Intent(this, Perfil.class);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
@@ -166,6 +167,7 @@ public class Registro extends AppCompatActivity {
         stackBuilder.addNextIntent(intent);
         pendingIntent = stackBuilder.getPendingIntent(1, PendingIntent.FLAG_CANCEL_CURRENT);
     }
+//metodo que crea un canal de cominiocacion para la notificacion
     private void createNotificacionChanel(){
         if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
             CharSequence name = "Notificacion";
@@ -174,6 +176,7 @@ public class Registro extends AppCompatActivity {
             notificationManager.createNotificationChannel(notificationChannel);
         }
     }
+    //metodo que crea la notificacion con sus respectivos texto textos
     private void createNotification(){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(),CHANNEL_ID);
         builder.setSmallIcon(R.drawable.ic_persona_perfil);
