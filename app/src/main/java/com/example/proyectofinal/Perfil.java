@@ -69,6 +69,7 @@ import java.util.Map;
         setContentView(R.layout.activity_perfil);
         String putId = getIntent().getStringExtra("usuarioId");
         nombreUsuario = findViewById(R.id.nombreUsuario);
+        TextView textoCambiarImagen= findViewById(R.id.text_view);
         correo = findViewById(R.id.PerfilCorreo);
         PerfilTelefono = findViewById(R.id.PerfilTelefono);
         puesto = findViewById(R.id.puesto);
@@ -92,6 +93,7 @@ import java.util.Map;
             sacarUsuario(user_id);
         }else{
             ImageButton llamar = findViewById(R.id.btnLlamar);
+            textoCambiarImagen.setVisibility(View.INVISIBLE);
             spinner.setVisibility(View.INVISIBLE);
             logout.setVisibility(View.INVISIBLE);
             editar.setVisibility(View.INVISIBLE);
