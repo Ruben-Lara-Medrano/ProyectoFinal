@@ -24,8 +24,8 @@
     <!-- ListView -->
     <string name="menuContextual">Editar tus datos de perfil.</string>
 
-    <!--perfil -->
-    <string name="cambiarFotoPerfil">Cambiar foto perfil</string>
+    <!--Perfil -->
+    <string name="cambiarFotoPerfil">Seleccione una foto para su perfil.</string>
     <string name="Volver">Volver a principal</string>
     <string name="nombrePerfil">Nombre de usuario</string>
     <string name="nombrePerfil2">Ruben.Lara_24</string>

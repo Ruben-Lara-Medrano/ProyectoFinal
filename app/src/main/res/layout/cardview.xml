@@ -68,8 +68,8 @@
                     app:srcCompat="@drawable/ic_btn_dalelike"
                     tools:ignore="VectorDrawableCompat" />
 
-                <ImageButton
-                    android:id="@+id/imageButton3"
+                <Button
+                    android:id="@+id/compartirApp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

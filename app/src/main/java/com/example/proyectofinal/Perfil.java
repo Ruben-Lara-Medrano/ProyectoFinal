@@ -53,7 +53,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
- public class perfil extends AppCompatActivity {
+ public class Perfil extends AppCompatActivity {
         private TextView tvPerfil, nombreUsuario, correo, PerfilTelefono,puesto;
         ImageView imagen;
         private Button logout;
@@ -95,16 +95,17 @@ import java.util.Map;
             spinner.setVisibility(View.INVISIBLE);
             logout.setVisibility(View.INVISIBLE);
             editar.setVisibility(View.INVISIBLE);
+            quitarMusica.setVisibility(View.INVISIBLE);
             sacarUsuario(putId);
             llamar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(ContextCompat.checkSelfPermission(perfil.this, Manifest.permission.CALL_PHONE)== PackageManager.PERMISSION_GRANTED){
+                    if(ContextCompat.checkSelfPermission(Perfil.this, Manifest.permission.CALL_PHONE)== PackageManager.PERMISSION_GRANTED){
                         call(PerfilTelefono.getText().toString());
                     }else{
 
                     }
-                    ActivityCompat.requestPermissions(perfil.this, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PERMISSION_CALL);
+                    ActivityCompat.requestPermissions(Perfil.this, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PERMISSION_CALL);
                 }
 
             });
@@ -315,7 +316,7 @@ import java.util.Map;
     }
     public void volver (View view)
     {
-        Intent volver = new Intent(this,principal.class );
+        Intent volver = new Intent(this, Principal.class );
         startActivity(volver);
     }
     @Override
@@ -359,12 +360,12 @@ import java.util.Map;
                  call(PerfilTelefono.getText().toString());
              }
              else{
-                 if(ActivityCompat.shouldShowRequestPermissionRationale(perfil.this, Manifest.permission.CALL_PHONE)){//Por si dio a no en los permisos
+                 if(ActivityCompat.shouldShowRequestPermissionRationale(Perfil.this, Manifest.permission.CALL_PHONE)){//Por si dio a no en los permisos
                      new AlertDialog.Builder(this).setMessage(R.string.necesitasPermisos)
                              .setPositiveButton(R.string.volverIntentar, new DialogInterface.OnClickListener() {
                                  @Override
                                  public void onClick(DialogInterface dialog, int which) {
-                                     ActivityCompat.requestPermissions(perfil.this, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PERMISSION_CALL);
+                                     ActivityCompat.requestPermissions(Perfil.this, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PERMISSION_CALL);
                                  }
                              })
                              .setNegativeButton(R.string.noGracias, new DialogInterface.OnClickListener() {

@@ -9,7 +9,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,7 +33,7 @@ public class Login extends AppCompatActivity {
         MediaPlayer mp = MediaPlayer.create(this, R.raw.musiaca_intro);
         mp.start();
         if(idFirebase!=null){
-            Intent i = new Intent(getApplicationContext(), principal.class);
+            Intent i = new Intent(getApplicationContext(), Principal.class);
             startActivity(i);
         }
     }
@@ -68,7 +67,7 @@ public class Login extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             //Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent i = new Intent(getApplicationContext(), principal.class);
+                            Intent i = new Intent(getApplicationContext(), Principal.class);
                             startActivity(i);
                             /*Toast.makeText(getApplicationContext(), "Inicio de sesion correcto.",
                                     Toast.LENGTH_SHORT).show();*/

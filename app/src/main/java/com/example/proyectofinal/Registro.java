@@ -112,7 +112,7 @@ public class Registro extends AppCompatActivity {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 idFirebase = mAuth.getUid();
                                 insertarUsuarioBdPropia(idFirebase, nombre.getText().toString(), correo.getText().toString(), puesto.getText().toString(),telefono.getText().toString(), pass.getText().toString());
-                                Intent registro = new Intent(getApplicationContext(), principal.class);
+                                Intent registro = new Intent(getApplicationContext(), Principal.class);
                                 setPendingIntent();
                                 createNotificacionChanel();
                                 createNotification();
@@ -160,7 +160,7 @@ public class Registro extends AppCompatActivity {
         startActivity(VolverLogin);
     }
     private void setPendingIntent(){
-        Intent intent = new Intent(this, perfil.class);
+        Intent intent = new Intent(this, Perfil.class);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addParentStack(Registro.class);
         stackBuilder.addNextIntent(intent);
@@ -178,7 +178,7 @@ public class Registro extends AppCompatActivity {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(),CHANNEL_ID);
         builder.setSmallIcon(R.drawable.ic_persona_perfil);
         builder.setContentTitle("Esta es tu primera notificacion WACHINNN!!!!!");
-        builder.setContentText("Cambia lo que quieras de tu perfil, no te cortes.");
+        builder.setContentText("Cambia lo que quieras de tu Perfil, no te cortes.");
         builder.setColor(Color.BLACK);
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
         builder.setLights(Color.GREEN, 1000, 1000);

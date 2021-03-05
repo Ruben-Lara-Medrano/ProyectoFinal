@@ -20,10 +20,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.proyectofinal.ItemAnimation;
+import com.example.proyectofinal.Perfil;
 import com.example.proyectofinal.R;
 import com.example.proyectofinal.pojos.DireccionesBd;
 import com.example.proyectofinal.pojos.Usuario;
-import com.example.proyectofinal.perfil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +58,7 @@ public class Adaptador_barra_de_busqueda extends RecyclerView.Adapter<Adaptador_
 
         holder.userName.setText(filteredUsuarioList.get(position).getNombre());
         holder.userDesc.setText(filteredUsuarioList.get(position).getPuesto());
-        holder.userImage.setImageResource(Integer.parseInt(filteredUsuarioList.get(position).getImagen()));
+
 
         ItemAnimation.animateFadeIn(holder.itemView, position);
 
@@ -66,7 +66,7 @@ public class Adaptador_barra_de_busqueda extends RecyclerView.Adapter<Adaptador_
             @Override
             public void onClick(View view) {
 //metodo para el onclick en cada card del buscador
-                Intent intent = new Intent(context, perfil.class);
+                Intent intent = new Intent(context, Perfil.class);
                intent.putExtra("usuarioId", filteredUsuarioList.get(position).getId());
 
                //intent.putExtra("userDesc", filteredUsuarioList.get(position).getDescp());
@@ -74,13 +74,13 @@ public class Adaptador_barra_de_busqueda extends RecyclerView.Adapter<Adaptador_
             }
         });
 
-        holder.userImage.setOnClickListener(new View.OnClickListener() {
+        /*holder.userImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "User Name Clicked", Toast.LENGTH_SHORT).show();
 
             }
-        });
+        });*/
 
 
     }
@@ -100,17 +100,16 @@ public class Adaptador_barra_de_busqueda extends RecyclerView.Adapter<Adaptador_
         public RecyclerviewHolder(@NonNull View itemView) {
             super(itemView);
 
-            userImage = itemView.findViewById(R.id.userImage);
             userName = itemView.findViewById(R.id.NombreUsuario);
             userDesc = itemView.findViewById(R.id.DescripcionUsuario);
 
 
         }
-        void bindata (final Usuario sacarUsuario){
+       /* void bindata (final Usuario sacarUsuario){
         cargarImagen(userImage, direciones.actualizarFoto()+sacarUsuario.getImagen());
-        }
+        }*/
     }
-    private void cargarImagen(CircleImageView imagenPerfil, String url){
+   /* private void cargarImagen(CircleImageView imagenPerfil, String url){
         ImageRequest imageRequest = new ImageRequest(url, new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {
@@ -123,7 +122,7 @@ public class Adaptador_barra_de_busqueda extends RecyclerView.Adapter<Adaptador_
             }
         });
         requestQueue.add(imageRequest);
-    }
+    }*/
     public Filter getFilter(){
 
         return new Filter() {

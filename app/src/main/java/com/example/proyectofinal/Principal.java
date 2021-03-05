@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +27,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.proyectofinal.adaptador.AdaptadorLista;
 import com.example.proyectofinal.pojos.DireccionesBd;
+import com.example.proyectofinal.pojos.Publicacion;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,20 +44,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class principal extends AppCompatActivity {
+public class Principal extends AppCompatActivity {
     List<Publicacion> publicacionLista = new ArrayList<>();
     RequestQueue requestQueue;
+   // Button Compartirapp;
     DireccionesBd direcciones = new DireccionesBd();
     AlertDialog.Builder dialogBuilder;
     AlertDialog dialog;
     FirebaseUser mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       // Compartirapp = findViewById(R.id.compartirApp);
         setContentView(R.layout.activity_principal);
         setContentView(R.layout.activity_principal); mAuth = FirebaseAuth.getInstance().getCurrentUser();
-
-
         FloatingActionButton anadirPublicaion = findViewById(R.id.anadirPublicacion);
         init();
         anadirPublicaion.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +68,7 @@ public class principal extends AppCompatActivity {
 
             }
         });
+
     }
 
     public void ShowPopup(View v) {
@@ -105,7 +110,7 @@ public class principal extends AppCompatActivity {
     }
     public void perfil (View view)
     {
-        Intent botonPerfil = new Intent(this,perfil.class );
+        Intent botonPerfil = new Intent(this, Perfil.class );
         startActivity(botonPerfil);
     }
     public void buscar (View view)
@@ -115,7 +120,7 @@ public class principal extends AppCompatActivity {
     }
     public void principal (View view)
     {
-        Intent botonChat =new Intent(this,principal.class );
+        Intent botonChat =new Intent(this, Principal.class );
         startActivity(botonChat);
     }
 
@@ -208,7 +213,17 @@ public class principal extends AppCompatActivity {
             mp.start();
         }
 
-        Intent botonChat =new Intent(this,principal.class );
+        Intent botonChat =new Intent(this, Principal.class );
         startActivity(botonChat);
     }
+   /* private void compartirApp() {
+        try {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, "El mejor blog de android http://javaheros.blogspot.pe/");
+            startActivity(Intent.createChooser(intent, "Share with"));
+        } catch (Exception e) {
+        }
+    }*/
+
 }

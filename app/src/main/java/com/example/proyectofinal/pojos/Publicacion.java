@@ -1,4 +1,4 @@
-package com.example.proyectofinal;
+package com.example.proyectofinal.pojos;
 public class Publicacion {
     public int FotoPerfil;
     public String textoPublicacion;

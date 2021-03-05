@@ -20,7 +20,7 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity android:name=".Login"></activity>
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SplashScreen.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,13 +42,13 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".perfil"
+            android:name=".Perfil"
             android:parentActivityName=".Registro">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Registro" />
         </activity>
-        <activity android:name=".principal" />
+        <activity android:name=".Principal" />
     </application>
 
 </manifest>

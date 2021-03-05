@@ -1,4 +1,4 @@
-package com.example.proyectofinal;
+package com.example.proyectofinal.adaptador;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.proyectofinal.pojos.Publicacion;
+import com.example.proyectofinal.R;
 
 import java.util.List;
 
