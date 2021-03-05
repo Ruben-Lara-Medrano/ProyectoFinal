@@ -67,6 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp"
+        style="?attr/materialButtonOutlinedStyle"
         android:background="@drawable/estilo_boton_popup"
         android:text="@string/enviar"
         android:textColor="@color/white" />

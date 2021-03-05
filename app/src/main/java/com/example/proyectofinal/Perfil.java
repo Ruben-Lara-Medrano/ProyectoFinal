@@ -76,6 +76,7 @@ import java.util.Map;
         logout= findViewById(R.id.logout);
         Spinner spinner = (Spinner)findViewById(R.id.editarFoto);
         registerForContextMenu(nombreUsuario);
+        //array para el spinner
         String [] opciones = {"Foto 1", "Foto 2", "Foto 3"};
 
         Switch quitarMusica = findViewById(R.id.quitarMusica);
@@ -146,12 +147,15 @@ import java.util.Map;
         });
 
         Usuario usuario = new Usuario(null,null,null,null,null,"",null);
-
+        //creamos un adaptador y le pasmos el array de opciones del spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, opciones);
         spinner.setAdapter(adapter);
+        //cada vez que el cliente selecione una foto entra por el siguiente onclicklistener
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
+            //mete la posicion directamente la posicion del spiner para selecionar la fot en la lista que tenemos
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //Llamamos al metodo actualizarfoto y le pasamos la posicion para que sea capaz de seleccionar la foto de la carpeta mas el string png
                 ImageRequest imageRequest = new ImageRequest(direcciones.actualizarFoto()+position+".png", response -> {
                     imagen.setImageBitmap(response);
                     meterFoto(""+position);
@@ -185,6 +189,7 @@ import java.util.Map;
          sharePreference.putBoolean("Musica",false);
          sharePreference.apply();
      }
+     //Metemos la posicion imagen dentro de la base de datos.
     private void meterFoto(String posicionImagen){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, direcciones.subirFoto(), response ->{
 

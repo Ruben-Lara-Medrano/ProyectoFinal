@@ -29,6 +29,7 @@
             android:id="@+id/texto"
             android:layout_width="323dp"
             android:layout_height="wrap_content"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/texto"

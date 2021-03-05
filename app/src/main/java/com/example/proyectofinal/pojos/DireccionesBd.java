@@ -1,7 +1,7 @@
 package com.example.proyectofinal.pojos;
 
 public class DireccionesBd {
-    private static final String URL="http://192.168.8.120:80/PhpMoviles/";
+    private static final String URL="http://172.16.2.219:80/PhpMoviles/";
     //http://192.168.8.119/PhpMoviles/sacar_usuario.php?id=iGdD8vdidHSW0qhuC5w4dV136VR2
     public String cogerUsuario(){
         return URL+"sacar_usuario.php?id=";

@@ -16,8 +16,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="713dp"
-            android:layout_height="136dp"
+            android:layout_width="393dp"
+            android:layout_height="126dp"
             android:layout_margin="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
@@ -42,15 +42,15 @@
                 <ImageView
                     android:id="@+id/FotoPerfil"
                     android:layout_width="36dp"
-                    android:layout_height="50dp"
+                    android:layout_height="118dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/ic_foto_perfil_predeterminada"
                     tools:ignore="VectorDrawableCompat" />
 
                 <TextView
                     android:id="@+id/TextoPublicacion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="200dp"
+                    android:layout_height="128dp"
                     android:layout_weight="1"
                     android:text="TextView" />
             </LinearLayout>
@@ -58,32 +58,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_btn_chat_"
-                    tools:ignore="VectorDrawableCompat" />
-
-                <ImageButton
-                    android:id="@+id/imageButton2"
-                    android:layout_width="145dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_btn_dalelike"
-                    tools:ignore="VectorDrawableCompat" />
-
-                <ImageButton
-                    android:id="@+id/compartirApp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_boton_compartir"
-                    tools:ignore="VectorDrawableCompat" />
-            </LinearLayout>
+                android:orientation="horizontal"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
