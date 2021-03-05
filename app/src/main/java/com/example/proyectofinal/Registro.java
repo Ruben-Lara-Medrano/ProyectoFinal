@@ -11,7 +11,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Intent;
-import android.content.PeriodicSync;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.proyectofinal.pojos.DireccionesBd;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -71,25 +71,28 @@ public class Registro extends AppCompatActivity {
     public void registrarUsuario (View view){
         if(correo.getText().toString().equals("") || nombre.getText().toString().equals("") || puesto.getText().toString().equals("")
                 || pass.getText().toString().equals("") || confirmacionpass.getText().toString().equals("")|| telefono.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "Todos los campos deben estar rellenados.", Toast.LENGTH_SHORT).show();
-            // Snackbar snackbar = Snackbar.make(view, R.string.todosCamposOk, Snackbar.LENGTH_LONG);
-            // snackbar.setDuration(10000);
-           // snackbar.setAction("Ok", v -> {
-            //});
-           // snackbar.show();
+            Snackbar snackbar = Snackbar.make(view, R.string.camposNoVacios , Snackbar.LENGTH_LONG);
+            snackbar.setDuration(2000);
+            snackbar.show();
         }
         else if(!pass.getText().toString().equals(confirmacionpass.getText().toString())){
-            Toast.makeText(getApplicationContext(), "Las contraseñas deben ser iguales", Toast.LENGTH_SHORT).show();
+            Snackbar snackbar = Snackbar.make(view, R.string.campoIguales , Snackbar.LENGTH_LONG);
+            snackbar.setDuration(2000);
+            snackbar.show();
            // snackbar.setDuration(10000);
             //snackbar.setAction("Ok", v -> {
            // });
             //snackbar.show();
         }
         else if(pass.length()<9){
-            Toast.makeText(getApplicationContext(), "La contraseña tiene que tener minimo 9 caracteres", Toast.LENGTH_SHORT).show();
+            Snackbar snackbar = Snackbar.make(view, R.string.contrasenaCaracteres, Snackbar.LENGTH_LONG);
+            snackbar.setDuration(2000);
+            snackbar.show();
         }
         else if(!confirmacion){
-            Toast.makeText(getApplicationContext(), "Tienes que aceptar los terminos.", Toast.LENGTH_SHORT).show();
+            Snackbar snackbar = Snackbar.make(view, R.string.terminos, Snackbar.LENGTH_LONG);
+            snackbar.setDuration(6000);
+            snackbar.show();
         }
         else{
 
@@ -103,7 +106,9 @@ public class Registro extends AppCompatActivity {
                                 // Sign in success, update UI with the signed-in user's information
                                 //Esta parte no es necesaria
                                 //Log.d(TAG, "createUserWithEmail:success");
-                                Toast.makeText(getApplicationContext(), "Usuario creado", Toast.LENGTH_SHORT).show();
+                                Snackbar snackbar = Snackbar.make(view, R.string.usuarioCreado, Snackbar.LENGTH_LONG);
+                                snackbar.setDuration(2000);
+                                snackbar.show();
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 idFirebase = mAuth.getUid();
                                 insertarUsuarioBdPropia(idFirebase, nombre.getText().toString(), correo.getText().toString(), puesto.getText().toString(),telefono.getText().toString(), pass.getText().toString());
@@ -117,7 +122,10 @@ public class Registro extends AppCompatActivity {
                                 // If sign in fails, display a message to the user.
                                 //este log se puede quitar
                                 //Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(getApplicationContext(), "Fallo la autenticacion", Toast.LENGTH_SHORT).show();
+                                Snackbar snackbar = Snackbar.make(view, R.string.falloAutenticaion, Snackbar.LENGTH_LONG);
+                                snackbar.setDuration(2000);
+                                snackbar.show();
+                                FirebaseUser user = mAuth.getCurrentUser();
                                 // updateUI(null);
                             }
 
@@ -130,7 +138,7 @@ public class Registro extends AppCompatActivity {
     }
     private void insertarUsuarioBdPropia(String idFirebase, String nombreUsuario, String correo, String puesto,String telefono, String pass){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, direcciones.insertarUsuario(), response ->
-                Toast.makeText(getApplicationContext(), "Bienvenid@ a la mejor red social del mundo", Toast.LENGTH_SHORT).show(), error -> Toast.makeText(getApplicationContext(), "No conseguiste logearte WACHINNN!", Toast.LENGTH_SHORT).show()){
+                Toast.makeText(getApplicationContext(), R.string.accesoRegistro, Toast.LENGTH_SHORT).show(), error -> Toast.makeText(getApplicationContext(), R.string.falloAutenticaion , Toast.LENGTH_SHORT).show()){
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> atributos = new HashMap<>();
@@ -148,7 +156,7 @@ public class Registro extends AppCompatActivity {
     }
     public void VolverLogin (View view)
     {
-        Intent VolverLogin = new Intent(this, login.class );
+        Intent VolverLogin = new Intent(this, Login.class );
         startActivity(VolverLogin);
     }
     private void setPendingIntent(){

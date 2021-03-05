@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,14 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".login">
+        <activity android:name=".Login"></activity>
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".barra_de_busqueda" />
+        <activity android:name=".BarraDeBusqueda" />
         <activity android:name=".Registro" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -39,7 +41,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".perfil"
+        <activity
+            android:name=".perfil"
             android:parentActivityName=".Registro">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

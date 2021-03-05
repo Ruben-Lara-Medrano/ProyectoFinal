@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".login">
+    tools:context=".Login">
 
 
     <ImageView
@@ -23,10 +23,11 @@
         android:layout_width="207dp"
         android:layout_height="35dp"
         android:background="#11000000"
+        android:textColor="#fff"
         android:drawableLeft="@drawable/ic_persona_perfil"
         android:ems="10"
         android:hint="@string/email"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,10 +40,11 @@
         android:layout_height="38dp"
         android:layout_marginTop="48dp"
         android:background="#11000000"
+        android:textColor="#fff"
         android:drawableLeft="@drawable/ic_candado"
         android:ems="10"
         android:hint="@string/pass"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -72,6 +74,8 @@
                 android:layout_width="100dp"
                 android:layout_height="55dp"
                 android:layout_centerInParent="true"
+                android:gravity="center"
+
                 android:text="@string/iniciarsesion"
                 android:textColor="#fff"
                 android:textSize="24sp" />

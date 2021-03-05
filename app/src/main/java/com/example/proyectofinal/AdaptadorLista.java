@@ -13,12 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class adaptadorLista extends RecyclerView.Adapter<adaptadorLista.ViewHolder> {
+public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHolder> {
     private List<Publicacion> nData;
     private LayoutInflater nInflater;
     private Context context;
 
-    public adaptadorLista (List<Publicacion> itemList, Context context){
+    public AdaptadorLista(List<Publicacion> itemList, Context context){
         this.nInflater = LayoutInflater.from(context);
         this.context = context;
         this.nData = itemList;
@@ -28,9 +28,9 @@ public class adaptadorLista extends RecyclerView.Adapter<adaptadorLista.ViewHold
         return nData.size();
     }
     @Override
-    public adaptadorLista.ViewHolder onCreateViewHolder (ViewGroup parent, int viewType){
+    public AdaptadorLista.ViewHolder onCreateViewHolder (ViewGroup parent, int viewType){
         View view = nInflater.from(parent.getContext()).inflate(R.layout.cardview, null, false);
-        return new adaptadorLista.ViewHolder(view);
+        return new AdaptadorLista.ViewHolder(view);
     }
 
     @Override

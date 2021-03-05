@@ -13,11 +13,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private EditText correo;
     private EditText pass;
@@ -41,16 +42,11 @@ public class login extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        Toast.makeText(this, "Iniciando Aplicacion", Toast.LENGTH_SHORT).show();
+
         // La actividad está a punto de hacerse visible.
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(this, "Cerrando aplicacion", Toast.LENGTH_SHORT).show();
-        // La actividad está a punto de ser destruida.
-    }
+
     public void registrar (View view)
     {
         Intent registrar = new Intent(this, Registro.class );
@@ -58,12 +54,9 @@ public class login extends AppCompatActivity {
     }
     public void iniciarSesion (View view){
         if(correo.getText().toString().equals("")|| pass.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "Todos los campos deben estar rellenados.", Toast.LENGTH_SHORT).show();
-            // Snackbar snackbar = Snackbar.make(view, R.string.todosCamposOk, Snackbar.LENGTH_LONG);
-            // snackbar.setDuration(10000);
-            // snackbar.setAction("Ok", v -> {
-            //});
-            // snackbar.show();
+            Snackbar snackbar = Snackbar.make(view, R.string.camposNoVacios, Snackbar.LENGTH_LONG);
+            snackbar.setDuration(2000);
+            snackbar.show();
         }
         else{
 
@@ -77,14 +70,19 @@ public class login extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Intent i = new Intent(getApplicationContext(), principal.class);
                             startActivity(i);
-                            Toast.makeText(getApplicationContext(), "Inicio de sesion correcto.",
-                                    Toast.LENGTH_SHORT).show();
+                            /*Toast.makeText(getApplicationContext(), "Inicio de sesion correcto.",
+                                    Toast.LENGTH_SHORT).show();*/
+                            Snackbar snackbar = Snackbar.make(view, R.string.inicioSesionCorrecto, Snackbar.LENGTH_LONG);
+                            snackbar.setDuration(2000);
+                            snackbar.show();
+
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             // Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(getApplicationContext(), "Fallo al iniciar sesion.",
-                                    Toast.LENGTH_SHORT).show();
+                            Snackbar snackbar = Snackbar.make(view, R.string.falloAutenticaion, Snackbar.LENGTH_LONG);
+                            snackbar.setDuration(2000);
+                            snackbar.show();
                             //updateUI(null);
                         }
 

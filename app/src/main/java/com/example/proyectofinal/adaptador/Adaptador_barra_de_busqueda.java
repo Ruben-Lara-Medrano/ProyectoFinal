@@ -111,7 +111,6 @@ public class Adaptador_barra_de_busqueda extends RecyclerView.Adapter<Adaptador_
         }
     }
     private void cargarImagen(CircleImageView imagenPerfil, String url){
-//todo mirar el tema de ñla foto
         ImageRequest imageRequest = new ImageRequest(url, new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {

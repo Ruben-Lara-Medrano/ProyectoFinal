@@ -8,6 +8,8 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -40,6 +42,7 @@ import com.example.proyectofinal.pojos.DireccionesBd;
 
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.proyectofinal.pojos.Usuario;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -65,14 +68,13 @@ import java.util.Map;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
         String putId = getIntent().getStringExtra("usuarioId");
-        TextView textView = findViewById(R.id.text_view);
         nombreUsuario = findViewById(R.id.nombreUsuario);
         correo = findViewById(R.id.PerfilCorreo);
         PerfilTelefono = findViewById(R.id.PerfilTelefono);
         puesto = findViewById(R.id.puesto);
         logout= findViewById(R.id.logout);
         Spinner spinner = (Spinner)findViewById(R.id.editarFoto);
-        registerForContextMenu(textView);
+        registerForContextMenu(nombreUsuario);
         String [] opciones = {"Foto 1", "Foto 2", "Foto 3"};
 
         Switch quitarMusica = findViewById(R.id.quitarMusica);
@@ -111,10 +113,11 @@ import java.util.Map;
             quitarMusica.setChecked(cargarPreferencias());
             if(isChecked){
                 activarMusica();
-                Toast.makeText(getApplicationContext(), "Musica activa", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.musicaActiva, Toast.LENGTH_SHORT).show();
+
             }else{
                 desactivarMusica();
-                Toast.makeText(getApplicationContext(), "Musica desactivada", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.musicaDesactiva, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -150,12 +153,12 @@ import java.util.Map;
                     meterFoto(""+position);
 
                 }, 0, 0, ImageView.ScaleType.CENTER, null,
-                        error -> Toast.makeText(getApplication(),"R.string.errorCargarImagen", Toast.LENGTH_SHORT).show());
+                        error -> Toast.makeText(getApplication(),R.string.errorCargarImagen, Toast.LENGTH_SHORT).show());
                 requestQueue.add(imageRequest);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(getApplicationContext(), "R.string.errorConexion", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.errorConexion, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -180,10 +183,10 @@ import java.util.Map;
      }
     private void meterFoto(String posicionImagen){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, direcciones.subirFoto(), response ->{
-            Toast.makeText(getApplicationContext(), "Actualizacion correcta", Toast.LENGTH_SHORT).show();
+
 
         }
-                , error -> Toast.makeText(getApplicationContext(), "Fallo en la actualizacion", Toast.LENGTH_SHORT).show()){
+                , error -> Toast.makeText(getApplicationContext(), R.string.falloActualizacion, Toast.LENGTH_SHORT).show()){
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> parametros = new HashMap<>();
@@ -222,7 +225,7 @@ import java.util.Map;
 
              }
          }, error ->{
-             Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+             Toast.makeText(getApplicationContext(), R.string.falloAlCargarDatos, Toast.LENGTH_SHORT).show();
          }
          );
 
@@ -251,12 +254,9 @@ import java.util.Map;
              @Override
              public void onClick(View v) {
                  if(editarNombre.getText().toString().equals("") || editarpuesto.getText().toString().equals("") || editartelefono.getText().toString().equals("")){
-                     Toast.makeText(getApplicationContext(), "Todos los campos deben estar rellenados.", Toast.LENGTH_SHORT).show();
-                     // Snackbar snackbar = Snackbar.make(view, R.string.todosCamposOk, Snackbar.LENGTH_LONG);
-                     // snackbar.setDuration(10000);
-                     // snackbar.setAction("Ok", v -> {
-                     //});
-                     // snackbar.show();
+                     Snackbar snackbar = Snackbar.make(v, R.string.camposNoVacios , Snackbar.LENGTH_LONG);
+                     snackbar.setDuration(2000);
+                     snackbar.show();
                  }
                  else{
                      editarUsuario.setNombre(editarNombre.getText().toString());
@@ -280,12 +280,12 @@ import java.util.Map;
      }
      private void actualizarUsuario(Usuario usuarioActualizar){
          StringRequest stringRequest = new StringRequest(Request.Method.POST, direcciones.actualizarUsuario(), response ->{
-             Toast.makeText(getApplicationContext(), "Actualizacion correcta", Toast.LENGTH_SHORT).show();
+             Toast.makeText(getApplicationContext(), R.string.usuarioActualizadoExito, Toast.LENGTH_SHORT).show();
              nombreUsuario.setText(usuarioActualizar.getNombre());
              PerfilTelefono.setText(usuarioActualizar.getTelefono());
              puesto.setText(usuarioActualizar.getPuesto());
          }
-                 , error -> Toast.makeText(getApplicationContext(), "Fallo en la actualizacion", Toast.LENGTH_SHORT).show()){
+                 , error -> Toast.makeText(getApplicationContext(), R.string.falloActualizacion, Toast.LENGTH_SHORT).show()){
              @Override
              protected Map<String, String> getParams() {
                  Map<String, String> parametros = new HashMap<>();
@@ -304,13 +304,13 @@ import java.util.Map;
      public void logout ()
      {
          FirebaseAuth.getInstance().signOut();
-         Intent logout = new Intent(this, login.class );
+         Intent logout = new Intent(this, Login.class );
          startActivity(logout);
      }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.setHeaderTitle("Elige una opcion");
+        menu.setHeaderTitle(R.string.eligeOpcion);
         getMenuInflater().inflate(R.menu.menu_contextual, menu);
     }
     public void volver (View view)
@@ -322,10 +322,11 @@ import java.util.Map;
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.opcion1:
-                Toast.makeText(this, "Cambio de texto", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.opcion2:
-                Toast.makeText(this, "Borrado de texto", Toast.LENGTH_SHORT).show();
+                String text=nombreUsuario.getText().toString();
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("text",  text);
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(this, R.string.copiarTexto, Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onContextItemSelected(item);
@@ -359,21 +360,21 @@ import java.util.Map;
              }
              else{
                  if(ActivityCompat.shouldShowRequestPermissionRationale(perfil.this, Manifest.permission.CALL_PHONE)){//Por si dio a no en los permisos
-                     new AlertDialog.Builder(this).setMessage("Necesitas activar los permisos de la app")
-                             .setPositiveButton("Vuelva a intentarlo", new DialogInterface.OnClickListener() {
+                     new AlertDialog.Builder(this).setMessage(R.string.necesitasPermisos)
+                             .setPositiveButton(R.string.volverIntentar, new DialogInterface.OnClickListener() {
                                  @Override
                                  public void onClick(DialogInterface dialog, int which) {
                                      ActivityCompat.requestPermissions(perfil.this, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PERMISSION_CALL);
                                  }
                              })
-                             .setNegativeButton("No gracias", new DialogInterface.OnClickListener() {
+                             .setNegativeButton(R.string.noGracias, new DialogInterface.OnClickListener() {
                                  @Override
                                  public void onClick(DialogInterface dialog, int which) {
                                      //Nada
                                  }
                              }).show();
                  }else{
-                     Toast.makeText(this, "necesitas activar los permisos", Toast.LENGTH_SHORT).show();
+                     Toast.makeText(this, R.string.necesitasPermisos, Toast.LENGTH_SHORT).show();
                  }
              }
          }

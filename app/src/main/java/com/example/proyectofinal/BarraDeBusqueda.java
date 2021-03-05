@@ -28,7 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class barra_de_busqueda extends AppCompatActivity {
+public class BarraDeBusqueda extends AppCompatActivity {
     RequestQueue requestQueue;
     RecyclerView RecyclerView;
     Adaptador_barra_de_busqueda adaptadorbarradebusqueda;
@@ -44,25 +44,6 @@ public class barra_de_busqueda extends AppCompatActivity {
         searchView = findViewById(R.id.search_bar);
 
         ListaUsuarios= buscarUsuarios(direcciones.buscar_usuarios());
-
-        /** ListaUsuarios.add(new Usuario("Pepe Thomas","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_female_1));
-         ListaUsuarios.add(new Usuario("Juan Green","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_male_2));
-         ListaUsuarios.add(new Usuario("Laura Michelle","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_female_4));
-         ListaUsuarios.add(new Usuario("Betty La fea","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_male_4));
-         ListaUsuarios.add(new Usuario("Garcia Lewis","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_female_1));
-         ListaUsuarios.add(new Usuario("Roberto asdf","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_female_2));
-         ListaUsuarios.add(new Usuario("Maria Jacks","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_female_1));
-         ListaUsuarios.add(new Usuario("Sara La crack","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_female_4));
-         ListaUsuarios.add(new Usuario("Ruben xzcv","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_male_4));
-         ListaUsuarios.add(new Usuario("Adams Grezen","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_male_2));
-         ListaUsuarios.add(new Usuario("Laura zxcv","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_female_2));
-         ListaUsuarios.add(new Usuario("Betty Lasef","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_male_4));
-         ListaUsuarios.add(new Usuario("Garcia asdf","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_female_1));
-         ListaUsuarios.add(new Usuario("Alex evfd","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_female_2));
-         ListaUsuarios.add(new Usuario("Pepa sadf","Android Mola un monton tio pruebalo mastodonte crack titan leyenda.", R.drawable.photo_male_2));
-         ListaUsuarios.add(new Usuario("Sara fgsdf","Android Mola un monton tio pruebalo mastodonte crack titan leyenda..", R.drawable.photo_female_4));*/
-
-
 
         setRecyclerView(ListaUsuarios);
 
@@ -96,11 +77,6 @@ public class barra_de_busqueda extends AppCompatActivity {
                     try {
                         jsonObject = response.getJSONObject(i);
                         ListaUsuarios.add(new Usuario(jsonObject.getString("id"),jsonObject.getString("nombre"),jsonObject.getString("email"),jsonObject.getString("telefono"),jsonObject.getString("puesto"),jsonObject.getString("imagen"),null));
-                        //ListaUsuarios.add(new Usuario(jsonObject.getString("nombre"),jsonObject.getString("puesto"), R.drawable.photo_female_4,1));
-                        // info.setUserName(jsonObject.getString("Nombre"));
-                        //  info.setDescp(jsonObject.getString("descripcion"));
-                        // info.setImageUrl(R.drawable.photo_female_4);
-                        //ListaUsuarios.add(info);
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -109,7 +85,7 @@ public class barra_de_busqueda extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.errorConexion, Toast.LENGTH_SHORT).show();
             }
         }
         );

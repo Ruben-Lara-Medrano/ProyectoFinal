@@ -28,6 +28,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.proyectofinal.pojos.DireccionesBd;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -81,7 +82,9 @@ public class principal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(texto.getText().toString().equals("")){
-                    Toast.makeText(getApplicationContext(), "El campo texto debe estar lleno.", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar.make(v, R.string.anadirPublicacion, Snackbar.LENGTH_LONG);
+                    snackbar.setDuration(2000);
+                    snackbar.show();
                 }
                 else{
                     insertarPublicacion(user_id,texto.getText().toString());
@@ -107,7 +110,7 @@ public class principal extends AppCompatActivity {
     }
     public void buscar (View view)
     {
-        Intent botonbuscar = new Intent(this,barra_de_busqueda.class );
+        Intent botonbuscar = new Intent(this, BarraDeBusqueda.class );
         startActivity(botonbuscar);
     }
     public void principal (View view)
@@ -144,7 +147,7 @@ public class principal extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "ERROR DE CONEXION", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.errorConexion, Toast.LENGTH_SHORT).show();
             }
         }
         );
@@ -153,7 +156,7 @@ public class principal extends AppCompatActivity {
 
     }
     public void setRecyclerView(List<Publicacion> publicacionesLista){
-        adaptadorLista listadapter = new adaptadorLista(publicacionLista, this);
+        AdaptadorLista listadapter = new AdaptadorLista(publicacionLista, this);
         RecyclerView recyclerView = findViewById(R.id.RecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -165,21 +168,17 @@ public class principal extends AppCompatActivity {
         // Id de cada opcion del menu
         if (id != R.id.paginaPrincipal) {
              if(id == R.id.btnprincipal){
-                Toast.makeText(this, "paginaPrincipal", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.menuPrincipal, Toast.LENGTH_SHORT).show();
             }
             if(id == R.id.btnperfil){
-                Toast.makeText(this, "perfil", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.perfil, Toast.LENGTH_SHORT).show();
             }
-            else if(id == R.id.compartir){
-                Toast.makeText(this, "Compartir", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-            else if(id == R.id.buscar){
-                Toast.makeText(this, "Buscar", Toast.LENGTH_SHORT).show();
+            else if(id == R.id.btnBuscar){
+                Toast.makeText(this, R.string.buscar, Toast.LENGTH_SHORT).show();
                 return true;
             }
         } else {
-            Toast.makeText(this, "menuPrincipal", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.menuPrincipal, Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -192,7 +191,7 @@ public class principal extends AppCompatActivity {
     //metodo para la insercion de publicaciones
     private void insertarPublicacion(String idFirebase, String texto){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, direcciones.anadirPublicaciones(), response ->
-                Toast.makeText(getApplicationContext(), "Publicacion insertada con exito", Toast.LENGTH_SHORT).show(), error -> Toast.makeText(getApplicationContext(), "La publicacion no se pudo insertar!", Toast.LENGTH_SHORT).show()){
+                Toast.makeText(getApplicationContext(), R.string.anadirPublicaciones, Toast.LENGTH_SHORT).show(), error -> Toast.makeText(getApplicationContext(), R.string.errorPublicaciones, Toast.LENGTH_SHORT).show()){
 
             @Override
             protected Map<String, String> getParams() {

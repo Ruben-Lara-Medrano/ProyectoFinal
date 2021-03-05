@@ -5,13 +5,13 @@
     <string name="emailogin">Email</string>
 
     <string name="pass">Password</string>
-    <string name="iniciarsesion">Login In</string>
+    <string name="iniciarsesion">Login</string>
     <string name="registrarse">Registry</string>
     <string name="Logo">Logo photo</string>
 
     <string name="pass2">Put again your password</string>
-    <string name="btnregistrarse">Sing in</string>
-    <string name="VolverLogin">Return login</string>
+    <string name="btnregistrarse">Sign up</string>
+    <string name="VolverLogin">Return to login</string>
 
     <string name="menuPrincipal">Main menu</string>
     <string name="chat">Chat</string>
@@ -21,6 +21,8 @@
     <string name="compartir">Share</string>
 
     <string name="menuContextual">Change your profile data.</string>
+
+    <string name="texto">Text</string>
 
     <string name="cambiarFotoPerfil">Edite profile image.</string>
     <string name="nombrePerfil">User name</string>
@@ -38,6 +40,33 @@
 
     <string name="opcion1">Copy text</string>
     <string name="opcion2">Delete text</string>
+
+    <string name="anadirPublicacion">The text section must be full.</string>
+    <string name="camposNoVacios">All the section must cant be empty.</string>
+    <string name="campoIguales">Passwords must be the same.</string>
+    <string name="contrasenaCaracteres">The password must be at least 9 characters long.</string>
+    <string name="terminos">Debes aceptar los terminos de uso. Recuerda que tus publicaciones pueden ser usadas para el aprendizaje.</string>
+    <string name="usuarioCreado">User created successfully.</string>
+    <string name="falloAutenticaion">Authentication failure. Try again.</string>
+    <string name="accesoRegistro">Welcome to the best social network in the world.</string>
+    <string name="notificaiones">This is your first notification WACHINNN!!!!!.</string>
+    <string name="notificaiones2">Change what you want on your profile, dont be shy.</string>
+    <string name="anadirPublicaciones">Post inserted successfully.</string>
+    <string name="errorPublicaciones">Post could not be created.</string>
+    <string name="errorConexion">Conexion error.</string>
+    <string name="inicioSesionCorrecto">Successful login.</string>
+    <string name="musicaActiva">Music on.</string>
+    <string name="musicaDesactiva">Music off.</string>
+    <string name="errorCargarImagen">Error loading image.</string>
+    <string name="falloActualizacion">Update failed.</string>
+    <string name="falloAlCargarDatos">Failed to load data.</string>
+    <string name="usuarioActualizadoExito">Data was successfully updated.</string>
+    <string name="copiarTexto">Copy text.</string>
+    <string name="necesitasPermisos">You need to activate the permissions.</string>
+    <string name="noGracias">No thanks.</string>
+    <string name="volverIntentar">Try again.</string>
+    <string name="eligeOpcion">choose an option.</string>
+    <string name="lista">Publications</string>
 
     <string name="puesto">Job</string>
     <string name="enviar">Send</string>

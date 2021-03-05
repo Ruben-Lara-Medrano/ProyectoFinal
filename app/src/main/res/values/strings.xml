@@ -40,7 +40,8 @@
     <!--Variables de maps -->
     <string name="title_activity_maps_empresa">Mapa</string>
 
-
+    <!-- publicaciones-->
+    <string name="texto">Texto</string>
     <!--Strings para el menu contextual -->
     <string name="opcion1">Copiar texto</string>
     <string name="opcion2">Borrar texto</string>
@@ -48,4 +49,32 @@
     <!--Pop-up -->
     <string name="puesto">Puesto</string>
     <string name="enviar">Enviar</string>
+
+    <!--Strings para toast -->
+    <string name="anadirPublicacion">El campo texto debe estar lleno</string>
+    <string name="camposNoVacios">Todos los campos deben estar llenos.</string>
+    <string name="campoIguales">Las contraseñas deben ser iguales.</string>
+    <string name="contrasenaCaracteres">La contraseña tiene que tener minimo 9 caracteres.</string>
+    <string name="terminos">Debes aceptar los terminos de uso. Recuerda que tus publicaciones pueden ser usadas para el aprendizaje.</string>
+    <string name="usuarioCreado">Usuario creado con exito.</string>
+    <string name="falloAutenticaion">Fallo en la autenticacion. Vuelva a intentarlo.</string>
+    <string name="accesoRegistro">Bienvenid@ a la mejor red social del mundo.</string>
+    <string name="notificaiones">Esta es tu primera notificacion WACHINNN!!!!!.</string>
+    <string name="notificaiones2">Cambia lo que quieras de tu perfil, no te cortes.</string>
+    <string name="anadirPublicaciones">Publicacion insertada con exito.</string>
+    <string name="errorPublicaciones">No se pudo crear la publicacion.</string>
+    <string name="errorConexion">Error de conexion.</string>
+    <string name="inicioSesionCorrecto">Inicio de sesion correcto.</string>
+    <string name="musicaActiva">Musica activa.</string>
+    <string name="musicaDesactiva">Musica desactivada.</string>
+    <string name="errorCargarImagen">Error al cargar imagen.</string>
+    <string name="falloActualizacion">Fallo en la actualizacion.</string>
+    <string name="falloAlCargarDatos">Fallo al cargar datos.</string>
+    <string name="usuarioActualizadoExito">Los datos fueron actualizados con exito.</string>
+    <string name="copiarTexto">Copiar texto.</string>
+    <string name="necesitasPermisos">Necesitas activar los permisos.</string>
+    <string name="noGracias">No gracias.</string>
+    <string name="volverIntentar">Volver a intentar.</string>
+    <string name="eligeOpcion">Elige una opcion.</string>
+    <string name="lista">Publicaciones</string>
 </resources>
